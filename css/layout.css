@@ -8,12 +8,8 @@
   justify-content: center;
 }
 
-/* .column-full {
-  width: 100%;
-} */
-
-.column-half {
-  width: 50%;
+.select-engine {
+  margin-left: 6.5rem;
 }
 
 @media screen and (min-width: 768px) {
