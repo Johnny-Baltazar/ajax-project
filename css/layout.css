@@ -11,6 +11,10 @@ header > .row {
   align-items: baseline;
 }
 
+.hidden {
+  display: none;
+}
+
 @media screen and (min-width: 768px) {
   .container {
     max-width: auto;
