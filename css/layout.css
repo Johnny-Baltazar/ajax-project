@@ -1,20 +1,19 @@
 .container {
-  max-width: 0 auto;
+  max-width: auto;
 }
 
 .row {
   display: flex;
-  align-items: baseline;
   justify-content: center;
 }
 
-.select-engine {
-  margin-left: 6.5rem;
+header > .row {
+  align-items: baseline;
 }
 
 @media screen and (min-width: 768px) {
   .container {
-    max-width: 0 auto;
+    max-width: auto;
   }
 
   .column-half {
