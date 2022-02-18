@@ -1,0 +1,146 @@
+.container {
+  font-family: roboto, sans-serif;
+}
+
+/* Header */
+
+header {
+  background-color: #007bff;
+  color: white;
+}
+
+.header-positioning {
+  text-align: end;
+  margin: 0 3.75rem 0 0;
+}
+
+.header-applications {
+  position: relative;
+  right: 11rem;
+}
+
+.engines-link {
+  position: relative;
+  right: 6.5rem;
+  text-decoration: none;
+  color: white;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.fivehundred-weight {
+  font-weight: 500;
+}
+
+/* Body */
+
+h1 {
+  font-size: 4.5rem;
+  font-weight: 300;
+  margin: 3rem 0 0;
+}
+
+hr {
+  width: 70%;
+  border: none;
+  height: 3px;
+  background-color: #f5f5f5;
+}
+
+.engine-image {
+  width: 50%;
+}
+
+.align-end {
+  text-align: end;
+}
+
+.left-div {
+  margin: 0 4rem 0 0;
+}
+
+.right-div {
+  margin: 0 0 0 4rem;
+  padding-bottom: 2rem;
+}
+
+h3 {
+  font-family: work-sans, sans-serif;
+  text-align: center;
+}
+
+.left-header {
+  position: relative;
+  left: 11rem;
+}
+
+.right-header {
+  position: relative;
+  right: 11rem;
+}
+
+.select-engine {
+  margin-left: 6.5rem;
+}
+
+@media screen and (max-width: 480px) {
+  /* Header */
+  .header-applications {
+    position: relative;
+    right: 0;
+  }
+
+  .engines-link {
+    position: relative;
+    right: 0.75rem;
+  }
+
+  /* Main */
+
+  .applications-heading {
+    font-size: 2.35rem;
+    margin: 2rem 0 0;
+  }
+
+  hr {
+    background-color: white;
+  }
+
+  .select-engine {
+    margin-left: 2rem;
+    justify-content: left;
+  }
+
+  selection-heading {
+    margin-top: 0.5rem;
+    font-size: 1.2rem;
+  }
+
+  .direction-column {
+    flex-direction: column;
+  }
+
+  .left-div,
+  .right-div {
+    margin: 0;
+    text-align: center;
+    padding-bottom: 2rem;
+  }
+
+  .left-header,
+  .right-header {
+    position: relative;
+    left: 0;
+    right: 0;
+  }
+
+  .engine-image {
+    width: 80%;
+  }
+
+  a > h3 {
+    margin: 1.2rem 3rem;
+  }
+}
