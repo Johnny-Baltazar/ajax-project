@@ -9,6 +9,10 @@ header {
   color: white;
 }
 
+h2 {
+  font-weight: 500;
+}
+
 .header-positioning {
   text-align: end;
   margin: 0 3.75rem 0 0;
@@ -16,7 +20,7 @@ header {
 
 .header-applications {
   position: relative;
-  right: 11rem;
+  right: 10.5rem;
 }
 
 .engines-link {
@@ -28,10 +32,6 @@ header {
 
 .cursor-pointer {
   cursor: pointer;
-}
-
-.fivehundred-weight {
-  font-weight: 500;
 }
 
 /* Body */
@@ -57,8 +57,12 @@ hr {
   text-align: end;
 }
 
+.align-center {
+  text-align: center;
+}
+
 .left-div {
-  margin: 0 4rem 0 0;
+  margin: 0 5rem 0 0;
 }
 
 .right-div {
@@ -69,6 +73,9 @@ hr {
 h3 {
   font-family: work-sans, sans-serif;
   text-align: center;
+  font-weight: 400;
+
+  /* line-height: 1.5px; */
 }
 
 .left-header {
@@ -85,23 +92,100 @@ h3 {
   margin-left: 6.5rem;
 }
 
+button {
+  background-color: #007bff;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 4px;
+  border: none;
+}
+
 @media screen and (min-width: 768px) {
-  /* Engine Pages */
+  /* Subau STI Page */
   .engine-pages {
     margin: 4rem 0 0;
   }
 
   .right-column {
-    width: 55%;
+    width: 60%;
+  }
+
+  .engine-heading {
+    font-weight: 400;
+    font-size: 32px;
+  }
+
+  .right-text {
+    margin: 0;
+  }
+
+  .vin-header {
+    position: relative;
+    left: 6.5rem;
+    margin: 5rem 0 0;
+  }
+
+  .vin-search {
+    position: relative;
+    left: 11.5rem;
+  }
+
+  .vin-input {
+    width: 50%;
+    padding: 0.4rem 0.75rem;
+    border-radius: 4px;
+    border: 2px solid #ced4da;
+    font-size: large;
+  }
+
+  .vin-row {
+    align-items: center;
+  }
+
+  .column-seventy {
+    width: 71%;
+  }
+
+  .column-thirty {
+    width: 29%;
+  }
+
+  .plus-row {
+    text-align: center;
+    align-items: center;
+    margin: 3rem 0 0;
+  }
+
+  .share-sti {
+    position: relative;
+    left: 2.5rem;
+  }
+
+  .plus-button {
+    position: relative;
+    left: 1rem;
+    padding: 0.125rem 1.9rem;
+    font-size: 1.5rem;
+  }
+
+  /* Entries */
+  .entry-row {
+    margin: 2.4rem 0;
+  }
+
+  ul {
+    padding: 0;
+    list-style-type: none;
+  }
+
+  li > h3 {
+    text-align: start;
+    margin: 0;
   }
 
   .right-column > h3 {
     margin: 0;
     text-align: start;
-  }
-
-  .right-text {
-    margin: 0;
   }
 }
 
