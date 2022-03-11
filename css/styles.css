@@ -77,17 +77,16 @@ h3 {
   /* line-height: 1.5px; */
 }
 
-.right-header {
-  position: relative;
-  right: 11rem;
-}
-
 button {
   background-color: #007bff;
   color: white;
   padding: 6px 12px;
   border-radius: 4px;
   border: none;
+}
+
+.search-button {
+  padding: 10px;
 }
 
 @media screen and (max-width: 480px) {
@@ -134,13 +133,6 @@ button {
     padding-bottom: 2rem;
   }
 
-  /* .left-header,
-  .right-header {
-    position: relative;
-    left: 0;
-    right: 0;
-  } */
-
   .engine-image {
     width: 80%;
   }
@@ -148,8 +140,6 @@ button {
   a > h3 {
     margin: 1.2rem 3rem;
   }
-
-  /* Subaru Page */
 }
 
 @media screen and (min-width: 992px) {
@@ -234,11 +224,6 @@ button {
     margin: 3rem 0;
   }
 
-  .share-sti {
-    position: relative;
-    left: 2.75rem;
-  }
-
   .share-gsr {
     position: relative;
     left: 7.25rem;
@@ -308,5 +293,26 @@ button {
   .right-header {
     position: relative;
     right: 14rem;
+  }
+
+  /* VIN search */
+  .vin-search {
+    position: relative;
+    left: 14.25rem;
+  }
+
+  /* share information */
+  .share-sti {
+    position: relative;
+    right: 3rem;
+  }
+
+  .plus-button {
+    left: 4.5rem;
+  }
+
+  /* entries */
+  ul {
+    margin: 0;
   }
 }
