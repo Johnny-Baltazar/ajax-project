@@ -7,20 +7,18 @@
   justify-content: center;
 }
 
-header > .row {
-  align-items: baseline;
-}
-
 .hidden {
   display: none;
 }
 
 @media screen and (min-width: 768px) {
-  .container {
-    max-width: auto;
-  }
-
   .column-half {
     width: 50%;
   }
 }
+
+/* @media screen and (max-width: 480px) {
+  .row {
+    flex-direction: column;
+  }
+} */

@@ -9,6 +9,10 @@ header {
   color: white;
 }
 
+header > .row {
+  align-items: baseline;
+}
+
 h2 {
   font-weight: 500;
 }
@@ -18,14 +22,9 @@ h2 {
   margin: 0 3.75rem 0 0;
 }
 
-.header-applications {
-  position: relative;
-  right: 10.5rem;
-}
-
 .engines-link {
   position: relative;
-  right: 6.5rem;
+  right: 6.25rem;
   text-decoration: none;
   color: white;
 }
@@ -66,7 +65,7 @@ hr {
 }
 
 .right-div {
-  margin: 0 0 0 4rem;
+  margin: 0 0 0 1rem;
   padding-bottom: 2rem;
 }
 
@@ -78,18 +77,9 @@ h3 {
   /* line-height: 1.5px; */
 }
 
-.left-header {
-  position: relative;
-  left: 11rem;
-}
-
 .right-header {
   position: relative;
   right: 11rem;
-}
-
-.select-engine {
-  margin-left: 6.5rem;
 }
 
 button {
@@ -98,95 +88,6 @@ button {
   padding: 6px 12px;
   border-radius: 4px;
   border: none;
-}
-
-@media screen and (min-width: 768px) {
-  /* Subau STI Page */
-  .engine-pages {
-    margin: 4rem 0 0;
-  }
-
-  .right-column {
-    width: 60%;
-  }
-
-  .engine-heading {
-    font-weight: 400;
-    font-size: 32px;
-  }
-
-  .right-text {
-    margin: 0;
-  }
-
-  .vin-header {
-    position: relative;
-    left: 6.5rem;
-    margin: 5rem 0 0;
-  }
-
-  .vin-search {
-    position: relative;
-    left: 11.5rem;
-  }
-
-  .vin-input {
-    width: 50%;
-    padding: 0.4rem 0.75rem;
-    border-radius: 4px;
-    border: 2px solid #ced4da;
-    font-size: large;
-  }
-
-  .vin-row {
-    align-items: center;
-  }
-
-  .column-seventy {
-    width: 71%;
-  }
-
-  .column-thirty {
-    width: 29%;
-  }
-
-  .plus-row {
-    text-align: center;
-    align-items: center;
-    margin: 3rem 0 0;
-  }
-
-  .share-sti {
-    position: relative;
-    left: 2.5rem;
-  }
-
-  .plus-button {
-    position: relative;
-    left: 1rem;
-    padding: 0.125rem 1.9rem;
-    font-size: 1.5rem;
-  }
-
-  /* Entries */
-  .entry-row {
-    margin: 2.4rem 0;
-  }
-
-  ul {
-    padding: 0;
-    list-style-type: none;
-  }
-
-  li > h3 {
-    text-align: start;
-    margin: 0;
-  }
-
-  .right-column > h3 {
-    margin: 0;
-    text-align: start;
-  }
 }
 
 @media screen and (max-width: 480px) {
@@ -201,7 +102,7 @@ button {
     right: 0.75rem;
   }
 
-  /* Main */
+  /* Engine Pages */
 
   .applications-heading {
     font-size: 2.35rem;
@@ -233,12 +134,12 @@ button {
     padding-bottom: 2rem;
   }
 
-  .left-header,
+  /* .left-header,
   .right-header {
     position: relative;
     left: 0;
     right: 0;
-  }
+  } */
 
   .engine-image {
     width: 80%;
@@ -249,4 +150,163 @@ button {
   }
 
   /* Subaru Page */
+}
+
+@media screen and (min-width: 992px) {
+  /* Engine Pages */
+  .engine-pages {
+    margin: 4rem 0 0;
+  }
+
+  .right-column {
+    width: 60%;
+  }
+
+  .engine-heading {
+    font-weight: 400;
+    font-size: 32px;
+  }
+
+  .header-applications {
+    position: relative;
+    right: 14.75rem;
+  }
+
+  .select-engine {
+    margin-left: 6rem;
+  }
+
+  .right-header {
+    position: relative;
+    right: 11rem;
+  }
+
+  .right-text {
+    margin: 0;
+  }
+
+  .vin-header {
+    position: relative;
+    left: 6.5rem;
+    margin: 5rem 0 0;
+  }
+
+  .gsr-vin {
+    position: relative;
+    left: 6rem;
+    margin: 5rem 0 0;
+  }
+
+  .ls3-vin {
+    position: relative;
+    left: 7rem;
+    margin: 5rem 0 0;
+  }
+
+  .vin-search {
+    position: relative;
+    left: 11.25rem;
+  }
+
+  .vin-input {
+    width: 50%;
+    padding: 0.4rem 0.75rem;
+    border-radius: 4px;
+    border: 2px solid #ced4da;
+    font-size: large;
+  }
+
+  .vin-row {
+    align-items: center;
+  }
+
+  .column-seventy {
+    width: 71%;
+  }
+
+  .column-thirty {
+    width: 29%;
+  }
+
+  .plus-row {
+    text-align: center;
+    align-items: center;
+    margin: 3rem 0;
+  }
+
+  .share-sti {
+    position: relative;
+    left: 2.75rem;
+  }
+
+  .share-gsr {
+    position: relative;
+    left: 7.25rem;
+  }
+
+  .share-chevy {
+    position: relative;
+    left: 8.75rem;
+  }
+
+  .share-honda {
+    position: relative;
+    left: 4.5rem;
+  }
+
+  .plus-button {
+    position: relative;
+    left: 3rem;
+    padding: 0.125rem 1.9rem;
+    font-size: 1.5rem;
+  }
+
+  /* Entries */
+  .entry-row {
+    margin: 2.4rem 0;
+  }
+
+  ul {
+    padding: 0;
+    list-style-type: none;
+  }
+
+  li > h3 {
+    text-align: start;
+    margin: 0;
+  }
+
+  .right-column > h3 {
+    margin: 0;
+    text-align: start;
+  }
+}
+
+@media screen and (min-width: 1401px) {
+  /* Header */
+  .header-applications {
+    position: relative;
+    right: 16rem;
+  }
+
+  .engines-link {
+    position: relative;
+    right: 7.75rem;
+  }
+
+  /* Engine list hompage */
+
+  .select-engine {
+    margin: 0 0 0 6.5rem;
+  }
+
+  .left-header {
+    position: relative;
+    left: 13.5rem;
+  }
+
+  .right-header {
+    position: relative;
+    right: 14rem;
+  }
 }
