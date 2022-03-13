@@ -23,8 +23,6 @@ h2 {
 }
 
 .engines-link {
-  position: relative;
-  right: 6.25rem;
   text-decoration: none;
   color: white;
 }
@@ -33,7 +31,11 @@ h2 {
   cursor: pointer;
 }
 
-/* Body */
+/* Home Page */
+.right-header,
+.left-header {
+  font-weight: bold;
+}
 
 h1 {
   font-size: 4.5rem;
@@ -73,8 +75,6 @@ h3 {
   font-family: work-sans, sans-serif;
   text-align: center;
   font-weight: 400;
-
-  /* line-height: 1.5px; */
 }
 
 button {
@@ -87,6 +87,15 @@ button {
 
 .search-button {
   padding: 10px;
+}
+
+/* Engine Entries */
+ul {
+  margin-top: 0;
+}
+
+li:nth-child(2) {
+  color: #979797;
 }
 
 @media screen and (max-width: 480px) {
@@ -143,6 +152,28 @@ button {
 }
 
 @media screen and (min-width: 992px) {
+  /* Header */
+  .engines-link {
+    position: relative;
+    right: 5.5rem;
+  }
+
+  .header-applications {
+    position: relative;
+    right: 10rem;
+  }
+
+  /* Home page */
+  .left-header {
+    position: relative;
+    left: 11rem;
+  }
+
+  .right-header {
+    position: relative;
+    right: 11rem;
+  }
+
   /* Engine Pages */
   .engine-pages {
     margin: 4rem 0 0;
@@ -157,18 +188,9 @@ button {
     font-size: 32px;
   }
 
-  .header-applications {
-    position: relative;
-    right: 14.75rem;
-  }
-
   .select-engine {
-    margin-left: 6rem;
-  }
-
-  .right-header {
     position: relative;
-    right: 11rem;
+    left: 7rem;
   }
 
   .right-text {
@@ -177,7 +199,7 @@ button {
 
   .vin-header {
     position: relative;
-    left: 6.5rem;
+    left: 6.25rem;
     margin: 5rem 0 0;
   }
 
@@ -224,6 +246,11 @@ button {
     margin: 3rem 0;
   }
 
+  .share-sti {
+    position: relative;
+    left: 2.75rem;
+  }
+
   .share-gsr {
     position: relative;
     left: 7.25rem;
@@ -241,7 +268,7 @@ button {
 
   .plus-button {
     position: relative;
-    left: 3rem;
+    left: 3.75rem;
     padding: 0.125rem 1.9rem;
     font-size: 1.5rem;
   }
@@ -265,9 +292,15 @@ button {
     margin: 0;
     text-align: start;
   }
+
+  li:nth-child(2) {
+    text-align: end;
+    position: relative;
+    bottom: 4rem;
+  }
 }
 
-@media screen and (min-width: 1401px) {
+@media screen and (min-width: 1600px) {
   /* Header */
   .header-applications {
     position: relative;
@@ -280,11 +313,6 @@ button {
   }
 
   /* Engine list hompage */
-
-  .select-engine {
-    margin: 0 0 0 6.5rem;
-  }
-
   .left-header {
     position: relative;
     left: 13.5rem;
@@ -304,15 +332,27 @@ button {
   /* share information */
   .share-sti {
     position: relative;
-    right: 3rem;
+    left: -3.25rem;
   }
 
   .plus-button {
-    left: 4.5rem;
+    left: 4.75rem;
+  }
+
+  .share-gsr {
+    left: 1.25rem;
+  }
+
+  .share-chevy {
+    left: 2.75rem;
+  }
+
+  .share-honda {
+    left: -1.5rem;
   }
 
   /* entries */
-  ul {
-    margin: 0;
+  li:nth-child(2) {
+    bottom: 1.75rem;
   }
 }
