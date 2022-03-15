@@ -11,6 +11,7 @@ header {
 
 header > .row {
   align-items: baseline;
+  flex-direction: row;
 }
 
 h2 {
@@ -85,6 +86,15 @@ button {
   border: none;
 }
 
+/* VIN Search */
+.vin-input {
+  /* width: 50%; */
+  padding: 0.4rem 0.75rem;
+  border-radius: 4px;
+  border: 2px solid #ced4da;
+  font-size: large;
+}
+
 .search-button {
   padding: 10px;
 }
@@ -121,33 +131,41 @@ li:nth-child(2) {
     background-color: white;
   }
 
-  .select-engine {
-    margin-left: 2rem;
-    justify-content: left;
-  }
-
-  selection-heading {
+  .selection-heading {
     margin-top: 0.5rem;
     font-size: 1.2rem;
-  }
-
-  .direction-column {
-    flex-direction: column;
+    font-weight: 700;
   }
 
   .left-div,
   .right-div {
     margin: 0;
-    text-align: center;
-    padding-bottom: 2rem;
+    text-align: start;
+    padding-bottom: 1rem;
   }
 
   .engine-image {
-    width: 80%;
+    width: 100%;
   }
 
   a > h3 {
-    margin: 1.2rem 3rem;
+    margin: 0.5rem 0 1.2rem;
+  }
+
+  .engine-heading {
+    text-align: left;
+    font-weight: 600;
+  }
+
+  /* VIN Search */
+  .vin-header > h3 {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    text-align: start;
+  }
+
+  div > input {
+    width: 100%;
   }
 }
 
@@ -197,10 +215,15 @@ li:nth-child(2) {
     margin: 0;
   }
 
+  /* VIN Search */
   .vin-header {
     position: relative;
     left: 6.25rem;
     margin: 5rem 0 0;
+  }
+
+  .vin-input {
+    width: 50%;
   }
 
   .gsr-vin {
@@ -220,13 +243,13 @@ li:nth-child(2) {
     left: 11.25rem;
   }
 
-  .vin-input {
+  /* .vin-input {
     width: 50%;
     padding: 0.4rem 0.75rem;
     border-radius: 4px;
     border: 2px solid #ced4da;
     font-size: large;
-  }
+  } */
 
   .vin-row {
     align-items: center;

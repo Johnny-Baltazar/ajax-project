@@ -11,14 +11,20 @@
   display: none;
 }
 
+@media screen and (max-width: 480px) {
+  /* .direction-column {
+    flex-direction: column;
+  } */
+
+  .row {
+    justify-content: start;
+    margin: 0 1.5rem;
+    flex-direction: column;
+  }
+}
+
 @media screen and (min-width: 992px) {
   .column-half {
     width: 50%;
   }
 }
-
-/* @media screen and (max-width: 480px) {
-  .row {
-    flex-direction: column;
-  }
-} */
