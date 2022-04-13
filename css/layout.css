@@ -12,10 +12,6 @@
 }
 
 @media screen and (max-width: 480px) {
-  /* .direction-column {
-    flex-direction: column;
-  } */
-
   .row {
     justify-content: start;
     margin: 0 1.5rem;
