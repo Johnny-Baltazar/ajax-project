@@ -1,20 +1,15 @@
-var $enginesLink = document.querySelector('.engines-link');
-var $subaruSti = document.querySelector('.subaru-sti');
-var $integraGsr = document.querySelector('.integra-gsr');
-var $civicSi = document.querySelector('.civic-si');
-var $chevy = document.querySelector('.chevy');
-var $subaruPage = document.querySelector('.subaru-page');
-var $homePage = document.querySelector('.home-page');
+const $enginesLink = document.querySelector('.engines-link');
+const $subaruSti = document.querySelector('.subaru-sti');
+const $integraGsr = document.querySelector('.integra-gsr');
+const $civicSi = document.querySelector('.civic-si');
+const $chevy = document.querySelector('.chevy');
+const $subaruPage = document.querySelector('.subaru-page');
+const $homePage = document.querySelector('.home-page');
 const $gsrPage = document.querySelector('.gsr-page');
 const $ls3Page = document.querySelector('.ls3-page');
 const $siPage = document.querySelector('.si-page');
 
-document.addEventListener('DOMContentLoaded', function (event) {
-  event.preventDefault();
-});
-
 $enginesLink.addEventListener('click', function (event) {
-  event.preventDefault();
 
   if (data.view === 'sti') {
     $subaruPage.classList.add('hidden');
