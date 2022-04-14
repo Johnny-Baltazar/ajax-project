@@ -1,6 +1,6 @@
 /* exported data */
 var data = {
-  view: 'engine-applications',
+  view: 'home-page',
   entries: [],
   editing: null,
   nextEntryId: 1
