@@ -7,15 +7,19 @@
   justify-content: center;
 }
 
-header > .row {
-  align-items: baseline;
+.hidden {
+  display: none;
 }
 
-@media screen and (min-width: 768px) {
-  .container {
-    max-width: auto;
+@media screen and (max-width: 480px) {
+  .row {
+    justify-content: start;
+    margin: 0 1.5rem;
+    flex-direction: column;
   }
+}
 
+@media screen and (min-width: 992px) {
   .column-half {
     width: 50%;
   }
