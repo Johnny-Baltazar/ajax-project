@@ -8,6 +8,12 @@ const $homePage = document.querySelector('.home-page');
 const $gsrPage = document.querySelector('.gsr-page');
 const $ls3Page = document.querySelector('.ls3-page');
 const $siPage = document.querySelector('.si-page');
+const $searchButton = document.querySelector('.search-button');
+const $vinInput = document.querySelector('.vin-input');
+const $notSeventeen = document.querySelector('.not-seventeen');
+const $closeSeventeen = document.querySelector('.close-seventeen');
+const $notAplhanum = document.querySelector('.not-alphanum');
+const $closeAlphanum = document.querySelector('.close-alphanum');
 
 $enginesLink.addEventListener('click', function (event) {
 
@@ -60,4 +66,28 @@ $chevy.addEventListener('click', function (event) {
   $ls3Page.classList.remove('hidden');
   $homePage.classList.add('hidden');
   data.view = 'ls3';
+});
+
+$searchButton.addEventListener('click', event => {
+  event.preventDefault();
+  const letterNumber = /^[0-9a-zA-Z]+$/;
+  const vinValue = $vinInput.value;
+  for (var i = 0; i < vinValue.length; i++) {
+    if (vinValue.length !== 17) {
+      $notSeventeen.classList.remove('hidden');
+    } else if (vinValue[i] !== letterNumber) {
+      $notAplhanum.classList.remove('hidden');
+    } else {
+      // console.log('VIN is acceptable.');
+    }
+  }
+});
+
+$closeSeventeen.addEventListener('click', event => {
+  event.preventDefault();
+  $notSeventeen.classList.add('hidden');
+});
+
+$closeAlphanum.addEventListener('click', event => {
+  $notAplhanum.classList.add('hidden');
 });
