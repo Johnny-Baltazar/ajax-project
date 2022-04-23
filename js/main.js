@@ -275,6 +275,24 @@ $searchFour.addEventListener('click', event => { // GSR sample VIN: JH4DC2390XS0
   }
 });
 
+var $exitButton = document.querySelector('.exit-button');
+
+$exitButton.addEventListener('click', event => {
+  if (data.view === 'sti') {
+    $vinDecode.classList.add('hidden');
+    $subaruPage.classList.remove('hidden');
+  } else if (data.view === 'integra-gsr') {
+    $vinDecode.classList.add('hidden');
+    $gsrPage.classList.remove('hidden');
+  } else if (data.view === 'ls3') {
+    $vinDecode.classList.add('hidden');
+    $ls3Page.classList.remove('hidden');
+  } else if (data.view === 'civic-si') {
+    $vinDecode.classList.add('hidden');
+    $siPage.classList.remove('hidden');
+  }
+});
+
 $closeSeventeen.addEventListener('click', event => {
   event.preventDefault();
   $notSeventeen.classList.add('hidden');
