@@ -175,13 +175,13 @@ const returnedVinDecode = vin => {
     }
 
     if (results[71].Value !== null) {
-      $cubicInch.textContent = Math.round(results[71].Value);
+      $cubicInch.textContent = 'Cubic Inch: ' + Math.round(results[71].Value);
     } else {
       $cubicInch.textContent = 'Not Available';
     }
 
     if (results[72].Value !== null) {
-      $liters.textContent = Math.round(results[72].Value * 10) / 10;
+      $liters.textContent = 'Liters: ' + Math.round(results[72].Value * 10) / 10;
     } else {
       $liters.textContent = 'Not Available';
     }
@@ -200,9 +200,10 @@ const $vinDecode = document.querySelector('.vin-decode');
 const $decodeHeading = document.querySelector('.decode-heading');
 const letterNumber = /^[0-9a-zA-Z]+$/;
 
-$searchOne.addEventListener('click', event => { // Subaru sample VIN: JF1GD70644L519076
-  var vinInput = $vinOne.value; // GSR sample VIN: JH4DC2390XS004187
+$searchOne.addEventListener('click', event => { // Subaru sample VIN: JF1GD70644L519076 GSR sample VIN: JH4DC2390XS004187
+  event.preventDefault();
 
+  var vinInput = $vinOne.value;
   for (var i = 0; i < vinInput.length; i++) {
     if (vinInput.length !== 17) {
       $notSeventeen.classList.remove('hidden');
@@ -222,6 +223,7 @@ const $vinTwo = document.querySelector('.vin-two');
 const $searchTwo = document.querySelector('.search-two');
 
 $searchTwo.addEventListener('click', event => {
+  event.preventDefault();
   const vinInput = $vinTwo.value;
   for (var i = 0; i < vinInput.length; i++) {
     if (vinInput.length !== 17) {
@@ -241,6 +243,7 @@ const $vinThree = document.querySelector('.vin-three');
 const $searchThree = document.querySelector('.search-three');
 
 $searchThree.addEventListener('click', event => { // 2011 Camaro SS VIN example: 2G1FS1EW1B9102917
+  event.preventDefault();
   const vinInput = $vinThree.value;
   for (var i = 0; i < vinInput.length; i++) {
     if (vinInput.length !== 17) {
@@ -260,6 +263,7 @@ const $vinFour = document.querySelector('.vin-four');
 const $searchFour = document.querySelector('.search-four');
 
 $searchFour.addEventListener('click', event => { // GSR sample VIN: JH4DC2390XS004187
+  event.preventDefault();
   const vinInput = $vinFour.value; // Civic SI VIN sample 1HGEM115XYL119227
   for (var i = 0; i < vinInput.length; i++) {
     if (vinInput.length !== 17) {
@@ -278,6 +282,7 @@ $searchFour.addEventListener('click', event => { // GSR sample VIN: JH4DC2390XS0
 var $exitButton = document.querySelector('.exit-button');
 
 $exitButton.addEventListener('click', event => {
+  event.preventDefault();
   if (data.view === 'sti') {
     $vinDecode.classList.add('hidden');
     $subaruPage.classList.remove('hidden');
