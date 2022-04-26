@@ -281,8 +281,7 @@ $searchFour.addEventListener('click', event => { // GSR sample VIN: JH4DC2390XS0
 
 var $exitButton = document.querySelector('.exit-button');
 
-$exitButton.addEventListener('click', event => {
-  event.preventDefault();
+const dataViewsExit = () => {
   if (data.view === 'sti') {
     $vinDecode.classList.add('hidden');
     $subaruPage.classList.remove('hidden');
@@ -296,6 +295,11 @@ $exitButton.addEventListener('click', event => {
     $vinDecode.classList.add('hidden');
     $siPage.classList.remove('hidden');
   }
+};
+
+$exitButton.addEventListener('click', event => {
+  event.preventDefault();
+  dataViewsExit();
 });
 
 $closeSeventeen.addEventListener('click', event => {
@@ -305,4 +309,47 @@ $closeSeventeen.addEventListener('click', event => {
 
 $closeAlphanum.addEventListener('click', event => {
   $notAplhanum.classList.add('hidden');
+});
+
+const $stiPlus = document.querySelector('.sti-plus');
+const $entryForm = document.querySelector('.entry-form');
+
+const openEntryForm = () => {
+  if (data.view === 'sti') {
+    $subaruPage.classList.add('hidden');
+    $entryForm.classList.remove('hidden');
+  } else if (data.view === 'integra-gsr') {
+    $gsrPage.classList.add('hidden');
+    $entryForm.classList.remove('hidden');
+  } else if (data.view === 'ls3') {
+    $ls3Page.classList.add('hidden');
+    $entryForm.classList.remove('hidden');
+  } else if (data.view === 'civic-si') {
+    $siPage.classList.add('hidden');
+    $entryForm.classList.remove('hidden');
+  }
+};
+
+$stiPlus.addEventListener('click', () => {
+  event.preventDefault();
+  openEntryForm();
+}
+);
+
+const $gsrPlus = document.querySelector('.gsr-plus');
+
+$gsrPlus.addEventListener('click', () => {
+  openEntryForm();
+});
+
+const $ls3Plus = document.querySelector('.ls3-plus');
+
+$ls3Plus.addEventListener('click', () => {
+  openEntryForm();
+});
+
+const $siPlus = document.querySelector('.si-plus');
+
+$siPlus.addEventListener('click', () => {
+  openEntryForm();
 });
