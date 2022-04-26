@@ -89,7 +89,6 @@ button {
 
 /* VIN Search */
 .vin-input {
-  /* width: 50%; */
   padding: 0.4rem 0.75rem;
   border-radius: 4px;
   border: 2px solid #ced4da;
@@ -100,6 +99,39 @@ button {
   padding: 10px;
 }
 
+.not-seventeen,
+.not-alphanum {
+  text-align: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  background: rgb(0 0 0 / 60%);
+  height: 110vh;
+  align-items: center;
+}
+
+.modal-vin {
+  text-align: center;
+  background-color: #f2f2f2;
+  width: 30%;
+  height: 12rem;
+  border-radius: 5px;
+  padding-top: 0.75rem;
+}
+
+.modal-vin > h3 {
+  font-weight: bold;
+}
+
+.close-seventeen,
+.close-alphanum {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  position: relative;
+  top: 1.75rem;
+}
+
 /* Engine Entries */
 ul {
   margin-top: 0;
@@ -107,7 +139,7 @@ ul {
 }
 
 li:nth-child(2) {
-  color: #979797;
+  color: #f5f5f5;
 }
 
 .edit-pencil {
@@ -117,6 +149,32 @@ li:nth-child(2) {
 .search-column {
   position: relative;
   left: 0;
+}
+
+.vin-decode {
+  background-color: #f2f2f2;
+  max-width: 1100px;
+  margin: 5rem auto;
+  padding: 2rem;
+}
+
+.decoded > h3 {
+  margin: 1.2rem 0.5rem;
+}
+
+h3 > span {
+  font-weight: bold;
+}
+
+.exit-button {
+  background-color: rgb(192, 0, 0);
+  font-size: 1.25rem;
+  padding: 0.4rem 1rem;
+}
+
+.content-end {
+  justify-content: end;
+  margin-right: 1rem;
 }
 
 @media screen and (max-width: 480px) {
@@ -248,6 +306,16 @@ li:nth-child(2) {
   .share-honda {
     text-align: start;
     margin-bottom: 0;
+  }
+
+  /* mobile VIN decode page */
+  .vin-decode {
+    margin: 0;
+    padding: 0;
+  }
+
+  .decoded > h3 {
+    text-align: start;
   }
 }
 
