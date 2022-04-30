@@ -23,4 +23,15 @@
   .column-half {
     width: 50%;
   }
+
+  .comments-post {
+    flex-direction: column;
+  }
+
+  textarea {
+    width: 44rem;
+    height: 7.4rem;
+    position: relative;
+    right: 2.75rem;
+  }
 }

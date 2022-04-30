@@ -30,7 +30,7 @@
       </div>
     </header>
     <main>
-      <div data-view="home-page" class="home-page">
+      <div data-view="home-page" class="home-page hidden">
         <div class="row engine-applications" >
           <h1 class="applications-heading">
             Engine Applications
@@ -356,8 +356,43 @@
           <button class="exit-button">EXIT</button>
         </div>
       </div>
-      <div data-view="entry-form" class="entry-form hidden">
-        <p>Entry Form</p>
+      <div data-view="entry-form" class="entry-form ">
+        <div class="row column-half">
+          <h2 class="post-header">Post Entry</h2>
+        </div>
+        <form>
+          <div class="row">
+            <div class="column-half placeholder-column">
+              <img src="images/placeholder-image-square.jpg" alt="image-placeholde" class="engine-image image-placeholde">
+            </div>
+            <div class="column-half">
+              <h3 class="title-header">Post Title</h3>
+              <label for="post-title"></label>
+              <input required name="post-title" class="post-input" type="text" placeholder="Include vehicle model">
+              <h3 class="url-header">Photo URL</h3>
+              <label for="photo-url"></label>
+              <input required name="photo-url" class="post-input" type="text" placeholder="Enter your photo here">
+            </div>
+          </div>
+          <div class="row comments-post">
+            <div>
+              <h3 class="comments-header">Comments</h3>
+            </div>
+            <div class="row">
+              <label for="comments"></label>
+              <textarea name="comments" class="comments-textarea" placeholder="Enter your description" required></textarea>
+            </div>
+          </div>
+          <div class="row">
+            <h3>Engine Application</h3>
+          </div>
+          <div class="row">
+            <label for="engine-selection"></label>
+            <select name="engine-selection">
+              <option value="">Select an engine application</option>
+            </select>
+          </div>
+        </form>
       </div>
     </main>
   </div>
