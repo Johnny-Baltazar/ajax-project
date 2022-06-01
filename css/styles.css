@@ -387,7 +387,13 @@ h3 > span {
   }
 }
 
-@media screen and (min-width: 1601px) {
+/* @media screen and (min-width: 1539px) {
+  .comments-header {
+    right: 27.75rem;
+  }
+} */
+
+@media screen and (min-width: 1539px) {
   /* Header */
   .header-applications {
     position: relative;
@@ -441,6 +447,24 @@ h3 > span {
   /* entries */
   li:nth-child(2) {
     bottom: 1.75rem;
+  }
+
+  /* Post entry page */
+  .comments-header {
+    right: 27.75rem;
+  }
+
+  textarea {
+    right: 5.5rem;
+    width: 50rem;
+  }
+
+  .application-heading {
+    right: 25.75rem;
+  }
+
+  .engine-selection {
+    right: 23.75rem;
   }
 }
 
