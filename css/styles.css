@@ -194,6 +194,22 @@ select {
   background-position: calc(100% - 0.75rem) center;
 }
 
+.post-input {
+  padding: 0.5rem 5rem 0.5rem 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+}
+
+.comments-textarea {
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #ced4da;
+  resize: none;
+  font-size: 1.2rem;
+  font-family: roboto, sans-serif;
+}
+
 @media screen and (min-width: 992px) {
   /* Header */
   .engines-link {
@@ -351,13 +367,6 @@ select {
     margin: 0 3rem 0 0;
   }
 
-  .post-input {
-    padding: 0.5rem 5rem 0.5rem 0.5rem;
-    font-size: 1rem;
-    border: 1px solid #ced4da;
-    border-radius: 4px;
-  }
-
   .title-header {
     text-align: start;
     margin: 0 0 0.25rem;
@@ -374,15 +383,6 @@ select {
     margin: 1.6rem 0 0.4rem;
   }
 
-  .comments-textarea {
-    padding: 0.5rem;
-    border-radius: 4px;
-    border: 1px solid #ced4da;
-    resize: none;
-    font-size: 1.2rem;
-    font-family: roboto, sans-serif;
-  }
-
   .application-heading {
     position: relative;
     right: 20rem;
@@ -391,13 +391,13 @@ select {
 
   .engine-selection {
     position: relative;
-    right: 13.9rem;
+    right: 12.5rem;
     margin: 0 0 3rem;
   }
 
   .submit-button {
     position: relative;
-    left: 8.35rem;
+    left: 7rem;
   }
 }
 
@@ -619,5 +619,14 @@ select {
 
   .decoded > h3 {
     text-align: start;
+  }
+
+  /* Mobile Post */
+  .mobile-heading {
+    text-align: left;
+  }
+
+  .textarea-row {
+    margin: 0;
   }
 }
