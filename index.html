@@ -363,7 +363,7 @@
         <form>
           <div class="row">
             <div class="column-half placeholder-column">
-              <img src="images/placeholder-image-square.jpg" alt="image-placeholde" class="engine-image image-placeholde">
+              <img src="images/placeholder-image-square.jpg" alt="image-placeholde" class="engine-image image-placeholder">
             </div>
             <div class="column-half">
               <h3 class="title-header mobile-heading">Title</h3>
@@ -371,7 +371,7 @@
               <input required name="post-title" class="post-input" type="text" placeholder="Include vehicle model">
               <h3 class="url-header mobile-heading">Photo URL</h3>
               <label for="photo-url"></label>
-              <input required name="photo-url" class="post-input" type="text" placeholder="Enter your photo here">
+              <input required name="photo-url" class="post-input url-input" type="text" placeholder="Enter your photo here">
             </div>
           </div>
           <div class="row comments-post">
@@ -388,7 +388,7 @@
           </div>
           <div class="row">
             <label for="engine-selection"></label>
-            <select name="engine-selection" class="engine-selection">
+            <select name="engine-selection" class="engine-selection" required>
               <option value="">Select an Engine Application </option>
               <option value="STI">Subaru WRX STI 2.5L</option>
               <option value="gsr">Acura Integra GSR 1.8L</option>

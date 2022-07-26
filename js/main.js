@@ -353,3 +353,10 @@ const $siPlus = document.querySelector('.si-plus');
 $siPlus.addEventListener('click', () => {
   openEntryForm();
 });
+
+const $urlInput = document.querySelector('.url-input');
+const $imagePlaceholder = document.querySelector('.image-placeholder');
+
+$urlInput.addEventListener('input', function (event) {
+  $imagePlaceholder.setAttribute('src', $urlInput.value);
+});
