@@ -91,8 +91,6 @@ const returnedVinDecode = vin => {
   xhr.open('GET', 'https://vpic.nhtsa.dot.gov/api/vehicles/decodevin/' + vin + '?format=json');
   xhr.responseType = 'json';
   xhr.addEventListener('load', function () {
-    // console.log('Status1:', xhr.status);
-    // console.log('response:', xhr.response);
 
     var results = xhr.response.Results;
 
@@ -312,21 +310,22 @@ $closeAlphanum.addEventListener('click', event => {
 });
 
 const $stiPlus = document.querySelector('.sti-plus');
-const $entryForm = document.querySelector('.entry-form');
+var $entryForm = document.querySelector('#entry-form');
+var $entryDiv = document.querySelector('.entry-div');
 
 const openEntryForm = () => {
   if (data.view === 'sti') {
     $subaruPage.classList.add('hidden');
-    $entryForm.classList.remove('hidden');
+    $entryDiv.classList.remove('hidden');
   } else if (data.view === 'integra-gsr') {
     $gsrPage.classList.add('hidden');
-    $entryForm.classList.remove('hidden');
+    $entryDiv.classList.remove('hidden');
   } else if (data.view === 'ls3') {
     $ls3Page.classList.add('hidden');
-    $entryForm.classList.remove('hidden');
+    $entryDiv.classList.remove('hidden');
   } else if (data.view === 'civic-si') {
     $siPage.classList.add('hidden');
-    $entryForm.classList.remove('hidden');
+    $entryDiv.classList.remove('hidden');
   }
 };
 
@@ -354,9 +353,83 @@ $siPlus.addEventListener('click', () => {
   openEntryForm();
 });
 
-const $urlInput = document.querySelector('.url-input');
-const $imagePlaceholder = document.querySelector('.image-placeholder');
+var $urlInput = document.querySelector('.url-input');
+var $imagePlaceholder = document.querySelector('.image-placeholder');
+// var $entryRow = document.querySelector('.entry-row');
 
 $urlInput.addEventListener('input', function (event) {
   $imagePlaceholder.setAttribute('src', $urlInput.value);
 });
+
+var $wrxEntry = document.querySelector('.wrx-entry');
+
+$entryForm.addEventListener('submit', function (event) {
+  event.preventDefault();
+
+  var title = $entryForm.elements.title.value;
+  var url = $entryForm.elements.url.value;
+  var comments = $entryForm.elements.comments.value;
+
+  var entries = {
+    title: title,
+    url: url,
+    comments: comments
+  };
+
+  data.entries.unshift(entries);
+
+  if (data.view === 'sti') {
+    $wrxEntry.prepend(renderPost(entries));
+    $entryDiv.classList.add('hidden');
+    $subaruPage.classList.remove('hidden');
+  }
+
+});
+
+function renderPost(entries) {
+  var postedRow = document.createElement('div');
+  postedRow.setAttribute('class', 'row');
+
+  var leftDiv = document.createElement('div');
+  leftDiv.setAttribute('class', 'column-half align-end left-div mobile-entry');
+  postedRow.appendChild(leftDiv);
+
+  var postImage = document.querySelector('img');
+  postImage.setAttribute('src', entries.url);
+  postImage.setAttribute('alt', 'uploaded-image');
+  postImage.setAttribute('class', 'engine-image');
+  leftDiv.appendChild(postImage);
+
+  var rightDiv = document.createElement('div');
+  rightDiv.setAttribute('class', 'column-half');
+  postedRow.appendChild(rightDiv);
+
+  var unorderedList = document.createElement('ul');
+  unorderedList.setAttribute('class', 'right-column');
+  rightDiv.appendChild(unorderedList);
+
+  var listOne = document.createElement('li');
+  unorderedList.appendChild(listOne);
+
+  var entryHeading = document.createElement('h3');
+  var entryTitle = document.createTextNode(entries.title);
+  entryHeading.setAttribute('class', 'entry-heading');
+  entryHeading.appendChild(entryTitle);
+  listOne.appendChild(entryHeading);
+
+  var listTwo = document.createElement('li');
+  var editPencil = document.createElement('i');
+  listTwo.setAttribute('class', 'edit-pencil');
+  editPencil.setAttribute('class', 'fas fa-pencil-alt');
+  listTwo.appendChild(editPencil);
+
+  var listThree = document.createElement('li');
+  var commentsPara = document.createElement('p');
+  var enteredComments = document.createTextNode(entries.comments);
+  commentsPara.setAttribute('class', 'entry-p');
+  commentsPara.appendChild(enteredComments);
+  listThree.appendChild(commentsPara);
+  unorderedList.appendChild(listThree);
+
+  return postedRow;
+}

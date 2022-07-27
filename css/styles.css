@@ -210,6 +210,10 @@ select {
   font-family: roboto, sans-serif;
 }
 
+.entry-div {
+  margin: 2rem 0 0;
+}
+
 @media screen and (min-width: 992px) {
   /* Header */
   .engines-link {

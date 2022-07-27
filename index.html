@@ -30,7 +30,7 @@
       </div>
     </header>
     <main>
-      <div data-view="home-page" class="home-page hidden">
+      <div data-view="home-page" class="home-page">
         <div class="row engine-applications" >
           <h1 class="applications-heading">
             Engine Applications
@@ -108,7 +108,7 @@
             <button class="plus-button sti-plus">+</button>
           </div>
         </div>
-        <div class="row entry-row ">
+        <div class="row entry-row wrx-entry">
           <div class="column-half align-end left-div mobile-entry">
             <div>
               <img src="images/wrx-downpipe.jpg" alt="STI-downpipe" class="engine-image">
@@ -285,11 +285,9 @@
             <button class="plus-button si-plus">+</button>
           </div>
         </div>
-        <div class="row entry-row ">
+        <div class="row entry-row">
           <div class="column-half align-end left-div mobile-entry">
-            <div>
-              <img src="images/b16a2-ecu.jpg" alt="STI-downpipe" class="engine-image">
-            </div>
+            <img src="images/b16a2-ecu.jpg" alt="STI-downpipe" class="engine-image">
           </div>
           <div class="column-half">
             <ul class="right-column">
@@ -356,22 +354,22 @@
           <button class="exit-button">EXIT</button>
         </div>
       </div>
-      <div data-view="entry-form" class="entry-form ">
+      <div data-view="entry-form" class="entry-div hidden">
         <div class="row column-half">
           <h2 class="post-header">Post Entry</h2>
         </div>
-        <form>
+        <form id="entry-form">
           <div class="row">
             <div class="column-half placeholder-column">
-              <img src="images/placeholder-image-square.jpg" alt="image-placeholde" class="engine-image image-placeholder">
+              <img src="images/placeholder-image-square.jpg" alt="image-placeholder" class="engine-image image-placeholder">
             </div>
             <div class="column-half">
               <h3 class="title-header mobile-heading">Title</h3>
               <label for="post-title"></label>
-              <input required name="post-title" class="post-input" type="text" placeholder="Include vehicle model">
+              <input required name="title" class="post-input" type="text" placeholder="Include vehicle model">
               <h3 class="url-header mobile-heading">Photo URL</h3>
               <label for="photo-url"></label>
-              <input required name="photo-url" class="post-input url-input" type="text" placeholder="Enter your photo here">
+              <input required name="url" class="post-input url-input" type="text" placeholder="Enter your photo here">
             </div>
           </div>
           <div class="row comments-post">
