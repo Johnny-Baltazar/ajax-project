@@ -361,7 +361,13 @@ $urlInput.addEventListener('input', function (event) {
   $imagePlaceholder.setAttribute('src', $urlInput.value);
 });
 
-var $wrxEntry = document.querySelector('.wrx-entry');
+const $wrxEntry = document.querySelector('.wrx-entry');
+const $gsrEntry = document.querySelector('.gsr-entry');
+const $ls3Entry = document.querySelector('.ls3-entry');
+const $siEntry = document.querySelector('.si-entry');
+
+// var $option = document.querySelectorAll('option');
+// var optionsValue;
 
 $entryForm.addEventListener('submit', function (event) {
   event.preventDefault();
@@ -382,7 +388,31 @@ $entryForm.addEventListener('submit', function (event) {
     $wrxEntry.prepend(renderPost(entries));
     $entryDiv.classList.add('hidden');
     $subaruPage.classList.remove('hidden');
+  } else if (data.view === 'integra-gsr') {
+    $gsrEntry.prepend(renderPost(entries));
+    $entryDiv.classList.add('hidden');
+    $gsrPage.classList.remove('hidden');
+  } else if (data.view === 'ls3') {
+    $ls3Entry.prepend(renderPost(entries));
+    $entryDiv.classList.add('hidden');
+    $ls3Page.classList.remove('hidden');
+  } else if (data.view === 'civic-si') {
+    $siEntry.prepend(renderPost(entries));
+    $entryDiv.classList.add('hidden');
+    $siPage.classList.remove('hidden');
   }
+
+  // console.log($option[1].attributes.value);
+  // for (var i = 0; i < $option.length; i++) {
+  // console.log($option[i].attributes.value);
+  // optionsValue = $option.attributes.value;
+  // if ($option[i].attributes.value === 'sti') {
+  // optionsValue = $option[i].attributes.value;
+  // console.log('sti');
+  // } else {
+  // console.log();
+  // }
+  // }
 
 });
 
@@ -422,6 +452,7 @@ function renderPost(entries) {
   listTwo.setAttribute('class', 'edit-pencil');
   editPencil.setAttribute('class', 'fas fa-pencil-alt');
   listTwo.appendChild(editPencil);
+  unorderedList.appendChild(listTwo);
 
   var listThree = document.createElement('li');
   var commentsPara = document.createElement('p');
@@ -430,6 +461,10 @@ function renderPost(entries) {
   commentsPara.appendChild(enteredComments);
   listThree.appendChild(commentsPara);
   unorderedList.appendChild(listThree);
+
+  // if ($option.value() === 'sti') {
+  //   console.log($option.value());
+  // }
 
   return postedRow;
 }
