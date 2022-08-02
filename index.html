@@ -146,28 +146,6 @@
             <button class="plus-button gsr-plus">+</button>
           </div>
         </div>
-        <div class="row entry-row ">
-          <div class="column-half align-end left-div mobile-entry">
-            <div>
-              <img src="images/b18c1-manifold.jpg" alt="STI-downpipe" class="engine-image">
-            </div>
-          </div>
-          <div class="column-half">
-            <ul class="right-column">
-              <li>
-                <h3 class="entry-heading">GSR Intake Manifold</h3>
-              </li>
-              <li class="edit-pencil">
-                <i class="fas fa-pencil-alt"></i>
-              </li>
-              <li>
-                <p class="entry-p">
-                  This is an example of stock Integera GSR intake manifold.
-                </p>
-              </li>
-            </ul>
-          </div>
-        </div>
         <div class="row entry-row gsr-entry">
         </div>
       </div>
@@ -210,28 +188,6 @@
             <button class="plus-button ls3-plus">+</button>
           </div>
         </div>
-        <div class="row entry-row ">
-          <div class="column-half align-end left-div mobile-entry">
-            <div>
-              <img src="images/camaro-twc.jpg" alt="LS3-Catalysts" class="engine-image">
-            </div>
-          </div>
-          <div class="column-half">
-            <ul class="right-column">
-              <li>
-                <h3 class="entry-heading">Camaro LS3 Catalytic Converter</h3>
-              </li>
-              <li class="edit-pencil">
-                <i class="fas fa-pencil-alt"></i>
-              </li>
-              <li>
-                <p class="entry-p">
-                  This is an example of stock Camrao LS3 catalytic converters.
-                </p>
-              </li>
-            </ul>
-          </div>
-        </div>
         <div class="row entry-row ls3-entry"></div>
       </div>
       <div data-view="civic-si" class="engine-pages si-page hidden">
@@ -265,26 +221,6 @@
           </div>
           <div class="column-half">
             <button class="plus-button si-plus">+</button>
-          </div>
-        </div>
-        <div class="row entry-row">
-          <div class="column-half align-end left-div mobile-entry">
-            <img src="images/b16a2-ecu.jpg" alt="STI-downpipe" class="engine-image">
-          </div>
-          <div class="column-half">
-            <ul class="right-column">
-              <li>
-                <h3 class="entry-heading">Civic B16A2 ECU</h3>
-              </li>
-              <li class="edit-pencil">
-                <i class="fas fa-pencil-alt"></i>
-              </li>
-              <li>
-                <p class="entry-p">
-                  This is an example of stock Civic B16A2 ECU.
-                </p>
-              </li>
-            </ul>
           </div>
         </div>
         <div class="row entry-row si-entry"></div>
@@ -369,7 +305,7 @@
           </div>
           <div class="row">
             <label for="engine-selection"></label>
-            <select name="engine-selection" class="engine-selection" required>
+            <select name="engine-selection" class="engine-selection" id="engine-selection" required>
               <option value="">Select an Engine Application </option>
               <option value="sti">Subaru WRX STI 2.5L</option>
               <option value="gsr">Acura Integra GSR 1.8L</option>
@@ -377,7 +313,7 @@
               <option value="ls3">Chevrolet LS3 6.2L</option>
             </select>
             <div class="submit-div">
-              <button class="submit-button">Submit</button>
+              <button type="submit" class="submit-button">Submit</button>
             </div>
           </div>
         </form>
