@@ -34,6 +34,10 @@ $enginesLink.addEventListener('click', function (event) {
     $homePage.classList.remove('hidden');
     $siPage.classList.add('hidden');
     data.view = 'home-page';
+  } else if (data.view === 'entry-form') {
+    $homePage.classList.remove('hidden');
+    $entryDiv.classList.add('hidden');
+    data.view = 'home-page';
   }
 });
 
@@ -410,7 +414,6 @@ $entryForm.addEventListener('submit', function (event) {
       $siPage.classList.remove('hidden');
     }
   }
-  $engineSelection.onchange = onChange;
   onChange();
 
   entries.dataEntryId = data.nextEntryId++;
