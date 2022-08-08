@@ -22,7 +22,7 @@ $enginesLink.addEventListener('click', function (event) {
     $subaruPage.classList.add('hidden');
     $homePage.classList.remove('hidden');
     data.view = 'home-page';
-  } else if (data.view === 'integra-gsr') {
+  } else if (data.view === 'gsr') {
     $homePage.classList.remove('hidden');
     $gsrPage.classList.add('hidden');
     data.view = 'home-page';
@@ -50,7 +50,7 @@ $integraGsr.addEventListener('click', function (event) {
 
   $gsrPage.classList.remove('hidden');
   $homePage.classList.add('hidden');
-  data.view = 'integra-gsr';
+  data.view = 'gsr';
 });
 
 $civicSi.addEventListener('click', function (event) {
@@ -283,7 +283,7 @@ const dataViewsExit = () => {
   if (data.view === 'sti') {
     $vinDecode.classList.add('hidden');
     $subaruPage.classList.remove('hidden');
-  } else if (data.view === 'integra-gsr') {
+  } else if (data.view === 'gsr') {
     $vinDecode.classList.add('hidden');
     $gsrPage.classList.remove('hidden');
   } else if (data.view === 'ls3') {
@@ -317,7 +317,7 @@ const openEntryForm = () => {
   if (data.view === 'sti') {
     $subaruPage.classList.add('hidden');
     $entryDiv.classList.remove('hidden');
-  } else if (data.view === 'integra-gsr') {
+  } else if (data.view === 'gsr') {
     $gsrPage.classList.add('hidden');
     $entryDiv.classList.remove('hidden');
   } else if (data.view === 'ls3') {
@@ -378,27 +378,30 @@ $entryForm.addEventListener('submit', function (event) {
   var title = $entryForm.elements.title.value;
   var url = $entryForm.elements.url.value;
   var comments = $entryForm.elements.comments.value;
+  var value = $engineSelection.value;
 
   var entries = {
     title: title,
     url: url,
-    comments: comments
+    comments: comments,
+    application: value
   };
 
   function onChange() {
-    var value = $engineSelection.value;
+    data.entries.unshift(entries);
     if (value === 'sti') {
-      data.entries.sti = data.entries;
-      data.entries.sti.unshift(entries);
+      // data.entries.unshift(entries);
       $wrxEntry.prepend(renderPost(entries));
       $entryDiv.classList.add('hidden');
       $subaruPage.classList.remove('hidden');
     } else if (value === 'gsr') {
+      // data.entries.unshift(entries);
       $gsrEntry.prepend(renderPost(entries));
       $entryDiv.classList.add('hidden');
       $gsrPage.classList.remove('hidden');
     } else if (value === 'ls3') {
       $ls3Entry.prepend(renderPost(entries));
+      // data.entries.unshift(entries);
       $entryDiv.classList.add('hidden');
       $ls3Page.classList.remove('hidden');
     } else if (value === 'si') {
@@ -410,21 +413,35 @@ $entryForm.addEventListener('submit', function (event) {
   $engineSelection.onchange = onChange;
   onChange();
 
+  entries.dataEntryId = data.nextEntryId++;
+
 });
 
-// document.addEventListener('DOMContentLoaded', function (event) {
-//   event.preventDefault();
-// });
+document.addEventListener('DOMContentLoaded', function (event) {
+  event.preventDefault();
+
+  for (var i = 0; i < data.entries.length; i++) {
+    if (data.view === 'sti' && data.entries[i].application === 'sti') {
+      $wrxEntry.appendChild(renderPost(data.entries[i]));
+    } else if (data.view === 'gsr' && data.entries[i].application === 'gsr') {
+      $gsrEntry.appendChild(renderPost(data.entries[i]));
+    } else if (data.view === 'ls3' && data.entries[i].application === 'ls3') {
+      $ls3Entry.appendChild(renderPost(data.entries[i]));
+    } else if (data.view === 'civic-si' && data.entries[i].application === 'si') {
+      $siEntry.appendChild(renderPost(data.entries[i]));
+    }
+  }
+});
 
 function renderPost(entries) {
   var postedRow = document.createElement('div');
-  postedRow.setAttribute('class', 'row');
+  postedRow.setAttribute('class', 'row posted-row');
 
   var leftDiv = document.createElement('div');
   leftDiv.setAttribute('class', 'column-half align-end left-div mobile-entry');
   postedRow.appendChild(leftDiv);
 
-  var postImage = document.querySelector('img');
+  var postImage = document.createElement('img');
   postImage.setAttribute('src', entries.url);
   postImage.setAttribute('alt', 'uploaded-image');
   postImage.setAttribute('class', 'engine-image');

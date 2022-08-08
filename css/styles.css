@@ -214,6 +214,16 @@ select {
   margin: 2rem 0 0;
 }
 
+/* STI Entries */
+.entry-row {
+  flex-direction: column;
+}
+
+/* All Entries */
+.posted-row {
+  margin: 0 0 3rem;
+}
+
 @media screen and (min-width: 992px) {
   /* Header */
   .engines-link {

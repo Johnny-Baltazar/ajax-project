@@ -12,7 +12,7 @@ window.addEventListener('beforeunload', function (event) {
 
   var dataJSON = JSON.stringify(data);
 
-  this.localStorage.setItem('data', dataJSON);
+  this.localStorage.setItem('engineData', dataJSON);
 });
 
 if (previousDataJSON !== null) {
