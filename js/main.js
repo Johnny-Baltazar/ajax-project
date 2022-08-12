@@ -41,32 +41,24 @@ $enginesLink.addEventListener('click', function (event) {
 });
 
 $subaruSti.addEventListener('click', function (event) {
-  // event.preventDefault();
-
   $subaruPage.classList.remove('hidden');
   $homePage.classList.add('hidden');
   data.view = 'sti';
 });
 
 $integraGsr.addEventListener('click', function (event) {
-  event.preventDefault();
-
   $gsrPage.classList.remove('hidden');
   $homePage.classList.add('hidden');
   data.view = 'gsr';
 });
 
 $civicSi.addEventListener('click', function (event) {
-  event.preventDefault();
-
   $siPage.classList.remove('hidden');
   $homePage.classList.add('hidden');
   data.view = 'civic-si';
 });
 
 $chevy.addEventListener('click', function (event) {
-  event.preventDefault();
-
   $ls3Page.classList.remove('hidden');
   $homePage.classList.add('hidden');
   data.view = 'ls3';
@@ -201,10 +193,8 @@ const $vinDecode = document.querySelector('.vin-decode');
 const $decodeHeading = document.querySelector('.decode-heading');
 const letterNumber = /^[0-9a-zA-Z]+$/;
 
-$searchOne.addEventListener('click', event => { // Subaru sample VIN: JF1GD70644L519076 GSR sample VIN: JH4DC2390XS004187
-  event.preventDefault();
-
-  var vinInput = $vinOne.value;
+$searchOne.addEventListener('click', event => { // Subaru sample VIN: JF1GD70644L519076
+  var vinInput = $vinOne.value; // GSR sample VIN: JH4DC2390XS004187
   for (var i = 0; i < vinInput.length; i++) {
     if (vinInput.length !== 17) {
       $notSeventeen.classList.remove('hidden');
@@ -215,6 +205,8 @@ $searchOne.addEventListener('click', event => { // Subaru sample VIN: JF1GD70644
       $subaruPage.classList.add('hidden');
       $vinDecode.classList.remove('hidden');
       $decodeHeading.textContent = `Vehicle Identification Number: ${vinInput}`;
+      data.decode = 'sti';
+      data.view = 'vin-decode';
     }
 
   }
@@ -224,7 +216,6 @@ const $vinTwo = document.querySelector('.vin-two');
 const $searchTwo = document.querySelector('.search-two');
 
 $searchTwo.addEventListener('click', event => {
-  event.preventDefault();
   const vinInput = $vinTwo.value;
   for (var i = 0; i < vinInput.length; i++) {
     if (vinInput.length !== 17) {
@@ -236,6 +227,8 @@ $searchTwo.addEventListener('click', event => {
       $gsrPage.classList.add('hidden');
       $vinDecode.classList.remove('hidden');
       $decodeHeading.textContent = `Vehicle Identification Number: ${vinInput}`;
+      data.decode = 'gsr';
+      data.view = 'vin-decode';
     }
   }
 });
@@ -244,7 +237,6 @@ const $vinThree = document.querySelector('.vin-three');
 const $searchThree = document.querySelector('.search-three');
 
 function lsDecode() { // 2011 Camaro SS VIN example: 2G1FS1EW1B9102917
-
   for (var i = 0; i < $vinThree.value.length; i++) {
     if ($vinThree.value.length !== 17) {
       $notSeventeen.classList.remove('hidden');
@@ -257,7 +249,6 @@ function lsDecode() { // 2011 Camaro SS VIN example: 2G1FS1EW1B9102917
       $decodeHeading.textContent = `Vehicle Identification Number: ${$vinThree.value}`;
       data.decode = 'ls3';
       data.view = 'vin-decode';
-
     }
   }
 }
@@ -279,6 +270,8 @@ function siDecode(event) { // GSR sample VIN: JH4DC2390XS004187
       $siPage.classList.add('hidden');
       $vinDecode.classList.remove('hidden');
       $decodeHeading.textContent = `Vehicle Identification Number: ${vinInput}`;
+      data.decode = 'si';
+      data.view = 'vin-decode';
     }
   }
 }
@@ -288,18 +281,22 @@ $searchFour.addEventListener('click', siDecode);
 var $exitButton = document.querySelector('.exit-button');
 
 var dataViewsExit = () => {
-  if (data.view === 'sti') {
+  if (data.decode === 'sti') {
     $vinDecode.classList.add('hidden');
     $subaruPage.classList.remove('hidden');
-  } else if (data.view === 'gsr') {
+    data.view = 'sti';
+  } else if (data.decode === 'gsr') {
     $vinDecode.classList.add('hidden');
     $gsrPage.classList.remove('hidden');
-  } else if (data.view === 'ls3') {
+    data.view = 'gsr';
+  } else if (data.decode === 'ls3') {
     $vinDecode.classList.add('hidden');
     $ls3Page.classList.remove('hidden');
-  } else if (data.view === 'civic-si') {
+    data.view = 'ls3';
+  } else if (data.decode === 'si') {
     $vinDecode.classList.add('hidden');
     $siPage.classList.remove('hidden');
+    data.view = 'civic-si';
   }
 };
 
