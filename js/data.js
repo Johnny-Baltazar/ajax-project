@@ -3,7 +3,8 @@ var data = {
   view: 'home-page',
   entries: [],
   editing: null,
-  nextEntryId: 1
+  nextEntryId: 1,
+  decode: []
 };
 
 var previousDataJSON = localStorage.getItem('engineData');

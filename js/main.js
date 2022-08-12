@@ -16,33 +16,32 @@ const $notAplhanum = document.querySelector('.not-alphanum');
 const $closeAlphanum = document.querySelector('.close-alphanum');
 
 $enginesLink.addEventListener('click', function (event) {
-  event.preventDefault();
 
   if (data.view === 'sti') {
     $subaruPage.classList.add('hidden');
     $homePage.classList.remove('hidden');
-    data.view = 'home-page';
   } else if (data.view === 'gsr') {
     $homePage.classList.remove('hidden');
     $gsrPage.classList.add('hidden');
-    data.view = 'home-page';
   } else if (data.view === 'ls3') {
     $homePage.classList.remove('hidden');
     $ls3Page.classList.add('hidden');
-    data.view = 'home-page';
   } else if (data.view === 'civic-si') {
     $homePage.classList.remove('hidden');
     $siPage.classList.add('hidden');
-    data.view = 'home-page';
   } else if (data.view === 'entry-form') {
     $homePage.classList.remove('hidden');
     $entryDiv.classList.add('hidden');
-    data.view = 'home-page';
+  } else if (data.view === 'vin-decode') {
+    $homePage.classList.remove('hidden');
+    $vinDecode.classList.add('hidden');
   }
+
+  data.view = 'home-page';
 });
 
 $subaruSti.addEventListener('click', function (event) {
-  event.preventDefault();
+  // event.preventDefault();
 
   $subaruPage.classList.remove('hidden');
   $homePage.classList.add('hidden');
@@ -244,28 +243,31 @@ $searchTwo.addEventListener('click', event => {
 const $vinThree = document.querySelector('.vin-three');
 const $searchThree = document.querySelector('.search-three');
 
-$searchThree.addEventListener('click', event => { // 2011 Camaro SS VIN example: 2G1FS1EW1B9102917
-  event.preventDefault();
-  const vinInput = $vinThree.value;
-  for (var i = 0; i < vinInput.length; i++) {
-    if (vinInput.length !== 17) {
+function lsDecode() { // 2011 Camaro SS VIN example: 2G1FS1EW1B9102917
+
+  for (var i = 0; i < $vinThree.value.length; i++) {
+    if ($vinThree.value.length !== 17) {
       $notSeventeen.classList.remove('hidden');
-    } else if (!letterNumber.test(vinInput)) {
+    } else if (!letterNumber.test($vinThree.value)) {
       $notAplhanum.classList.remove('hidden');
     } else {
-      returnedVinDecode(vinInput);
+      returnedVinDecode($vinThree.value);
       $ls3Page.classList.add('hidden');
       $vinDecode.classList.remove('hidden');
-      $decodeHeading.textContent = `Vehicle Identification Number: ${vinInput}`;
+      $decodeHeading.textContent = `Vehicle Identification Number: ${$vinThree.value}`;
+      data.decode = 'ls3';
+      data.view = 'vin-decode';
+
     }
   }
-});
+}
+
+$searchThree.addEventListener('click', lsDecode);
 
 const $vinFour = document.querySelector('.vin-four');
 const $searchFour = document.querySelector('.search-four');
 
-$searchFour.addEventListener('click', event => { // GSR sample VIN: JH4DC2390XS004187
-  event.preventDefault();
+function siDecode(event) { // GSR sample VIN: JH4DC2390XS004187
   const vinInput = $vinFour.value; // Civic SI VIN sample 1HGEM115XYL119227
   for (var i = 0; i < vinInput.length; i++) {
     if (vinInput.length !== 17) {
@@ -279,11 +281,13 @@ $searchFour.addEventListener('click', event => { // GSR sample VIN: JH4DC2390XS0
       $decodeHeading.textContent = `Vehicle Identification Number: ${vinInput}`;
     }
   }
-});
+}
+
+$searchFour.addEventListener('click', siDecode);
 
 var $exitButton = document.querySelector('.exit-button');
 
-const dataViewsExit = () => {
+var dataViewsExit = () => {
   if (data.view === 'sti') {
     $vinDecode.classList.add('hidden');
     $subaruPage.classList.remove('hidden');
@@ -300,12 +304,10 @@ const dataViewsExit = () => {
 };
 
 $exitButton.addEventListener('click', event => {
-  event.preventDefault();
   dataViewsExit();
 });
 
 $closeSeventeen.addEventListener('click', event => {
-  event.preventDefault();
   $notSeventeen.classList.add('hidden');
 });
 
@@ -334,7 +336,6 @@ const openEntryForm = () => {
 };
 
 $stiPlus.addEventListener('click', () => {
-  event.preventDefault();
   openEntryForm();
   data.view = 'entry-form';
 }
@@ -363,7 +364,6 @@ $siPlus.addEventListener('click', () => {
 
 var $urlInput = document.querySelector('.url-input');
 var $imagePlaceholder = document.querySelector('.image-placeholder');
-// var $entryRow = document.querySelector('.entry-row');
 
 $urlInput.addEventListener('input', function (event) {
   $imagePlaceholder.setAttribute('src', $urlInput.value);
@@ -394,18 +394,15 @@ $entryForm.addEventListener('submit', function (event) {
   function onChange() {
     data.entries.unshift(entries);
     if (value === 'sti') {
-      // data.entries.unshift(entries);
       $wrxEntry.prepend(renderPost(entries));
       $entryDiv.classList.add('hidden');
       $subaruPage.classList.remove('hidden');
     } else if (value === 'gsr') {
-      // data.entries.unshift(entries);
       $gsrEntry.prepend(renderPost(entries));
       $entryDiv.classList.add('hidden');
       $gsrPage.classList.remove('hidden');
     } else if (value === 'ls3') {
       $ls3Entry.prepend(renderPost(entries));
-      // data.entries.unshift(entries);
       $entryDiv.classList.add('hidden');
       $ls3Page.classList.remove('hidden');
     } else if (value === 'si') {
@@ -420,9 +417,33 @@ $entryForm.addEventListener('submit', function (event) {
 
 });
 
-document.addEventListener('DOMContentLoaded', function (event) {
-  event.preventDefault();
+function noRefresh() {
+  if (data.view === 'entry-form') {
+    $homePage.classList.add('hidden');
+    $entryDiv.classList.remove('hidden');
+  } else if (data.view === 'sti') {
+    $homePage.classList.add('hidden');
+    $subaruPage.classList.remove('hidden');
+  } else if (data.view === 'gsr') {
+    $homePage.classList.add('hidden');
+    $gsrPage.classList.remove('hidden');
+  } else if (data.view === 'ls3') {
+    $homePage.classList.add('hidden');
+    $ls3Page.classList.remove('hidden');
+  } else if (data.view === 'civic-si') {
+    $homePage.classList.add('hidden');
+    $siPage.classList.remove('hidden');
+  }
+}
 
+window.addEventListener('beforeunload', function (event) {
+  if (data.view === 'vin-decode') {
+    event.preventDefault();
+    event.returnValue = '';
+  }
+});
+
+document.addEventListener('DOMContentLoaded', function (event) {
   for (var i = 0; i < data.entries.length; i++) {
     if (data.view === 'sti' && data.entries[i].application === 'sti') {
       $wrxEntry.appendChild(renderPost(data.entries[i]));
@@ -434,6 +455,8 @@ document.addEventListener('DOMContentLoaded', function (event) {
       $siEntry.appendChild(renderPost(data.entries[i]));
     }
   }
+
+  noRefresh();
 });
 
 function renderPost(entries) {
