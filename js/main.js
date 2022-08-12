@@ -16,6 +16,7 @@ const $notAplhanum = document.querySelector('.not-alphanum');
 const $closeAlphanum = document.querySelector('.close-alphanum');
 
 $enginesLink.addEventListener('click', function (event) {
+  event.preventDefault();
 
   if (data.view === 'sti') {
     $subaruPage.classList.add('hidden');
@@ -30,6 +31,8 @@ $enginesLink.addEventListener('click', function (event) {
     $homePage.classList.remove('hidden');
     $siPage.classList.add('hidden');
   } else if (data.view === 'entry-form') {
+    event.preventDefault();
+    event.returnValue = '';
     $homePage.classList.remove('hidden');
     $entryDiv.classList.add('hidden');
   } else if (data.view === 'vin-decode') {
@@ -38,6 +41,7 @@ $enginesLink.addEventListener('click', function (event) {
   }
 
   data.view = 'home-page';
+  data.decode = [];
 });
 
 $subaruSti.addEventListener('click', function (event) {
@@ -370,7 +374,6 @@ const $wrxEntry = document.querySelector('.wrx-entry');
 const $gsrEntry = document.querySelector('.gsr-entry');
 const $ls3Entry = document.querySelector('.ls3-entry');
 const $siEntry = document.querySelector('.si-entry');
-
 var $engineSelection = document.getElementById('engine-selection');
 
 $entryForm.addEventListener('submit', function (event) {
@@ -388,30 +391,39 @@ $entryForm.addEventListener('submit', function (event) {
     application: value
   };
 
+  entries.entryId = data.nextEntryId;
+
   function onChange() {
     data.entries.unshift(entries);
     if (value === 'sti') {
       $wrxEntry.prepend(renderPost(entries));
       $entryDiv.classList.add('hidden');
       $subaruPage.classList.remove('hidden');
+      data.view = 'sti';
     } else if (value === 'gsr') {
       $gsrEntry.prepend(renderPost(entries));
       $entryDiv.classList.add('hidden');
       $gsrPage.classList.remove('hidden');
+      data.view = 'gsr';
     } else if (value === 'ls3') {
       $ls3Entry.prepend(renderPost(entries));
       $entryDiv.classList.add('hidden');
       $ls3Page.classList.remove('hidden');
+      data.view = 'ls3';
     } else if (value === 'si') {
       $siEntry.prepend(renderPost(entries));
       $entryDiv.classList.add('hidden');
       $siPage.classList.remove('hidden');
+      data.view = 'civic-si';
     }
   }
+
   onChange();
 
-  entries.dataEntryId = data.nextEntryId++;
+  data.nextEntryId++;
 
+  $imagePlaceholder.setAttribute('src', 'images/placeholder-image-square.jpg');
+  $entryForm.reset();
 });
 
 function noRefresh() {
@@ -435,6 +447,9 @@ function noRefresh() {
 
 window.addEventListener('beforeunload', function (event) {
   if (data.view === 'vin-decode') {
+    event.preventDefault();
+    event.returnValue = '';
+  } else if (data.view === 'entry-form') {
     event.preventDefault();
     event.returnValue = '';
   }
