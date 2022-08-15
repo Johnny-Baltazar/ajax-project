@@ -214,6 +214,10 @@ select {
   margin: 2rem 0 0;
 }
 
+.cancel-entry {
+  background-color: #c00;
+}
+
 /* STI Entries */
 .entry-row {
   flex-direction: column;
@@ -405,13 +409,13 @@ select {
 
   .engine-selection {
     position: relative;
-    right: 12.5rem;
+    right: 10rem;
     margin: 0 0 3rem;
   }
 
   .submit-button {
     position: relative;
-    left: 7rem;
+    left: 4.5rem;
   }
 }
 
@@ -486,11 +490,11 @@ select {
   }
 
   .engine-selection {
-    right: 18.25rem;
+    right: 16rem;
   }
 
   .submit-button {
-    left: 7rem;
+    left: 5rem;
   }
 }
 
@@ -652,6 +656,8 @@ select {
 
   .submit-div {
     text-align: end;
+    position: relative;
+    bottom: 1.85rem;
   }
 
   .submit-button {

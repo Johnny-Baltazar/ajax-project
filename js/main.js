@@ -196,9 +196,10 @@ const returnedVinDecode = vin => {
 const $vinDecode = document.querySelector('.vin-decode');
 const $decodeHeading = document.querySelector('.decode-heading');
 const letterNumber = /^[0-9a-zA-Z]+$/;
+var vinInput;
 
 $searchOne.addEventListener('click', event => { // Subaru sample VIN: JF1GD70644L519076
-  var vinInput = $vinOne.value; // GSR sample VIN: JH4DC2390XS004187
+  vinInput = $vinOne.value; // GSR sample VIN: JH4DC2390XS004187
   for (var i = 0; i < vinInput.length; i++) {
     if (vinInput.length !== 17) {
       $notSeventeen.classList.remove('hidden');
@@ -220,7 +221,7 @@ const $vinTwo = document.querySelector('.vin-two');
 const $searchTwo = document.querySelector('.search-two');
 
 $searchTwo.addEventListener('click', event => {
-  const vinInput = $vinTwo.value;
+  vinInput = $vinTwo.value;
   for (var i = 0; i < vinInput.length; i++) {
     if (vinInput.length !== 17) {
       $notSeventeen.classList.remove('hidden');
@@ -241,16 +242,17 @@ const $vinThree = document.querySelector('.vin-three');
 const $searchThree = document.querySelector('.search-three');
 
 function lsDecode() { // 2011 Camaro SS VIN example: 2G1FS1EW1B9102917
-  for (var i = 0; i < $vinThree.value.length; i++) {
-    if ($vinThree.value.length !== 17) {
+  vinInput = $vinThree.value;
+  for (var i = 0; i < vinInput.length; i++) {
+    if (vinInput.length !== 17) {
       $notSeventeen.classList.remove('hidden');
-    } else if (!letterNumber.test($vinThree.value)) {
+    } else if (!letterNumber.test(vinInput)) {
       $notAplhanum.classList.remove('hidden');
     } else {
-      returnedVinDecode($vinThree.value);
+      returnedVinDecode(vinInput);
       $ls3Page.classList.add('hidden');
       $vinDecode.classList.remove('hidden');
-      $decodeHeading.textContent = `Vehicle Identification Number: ${$vinThree.value}`;
+      $decodeHeading.textContent = `Vehicle Identification Number: ${vinInput}`;
       data.decode = 'ls3';
       data.view = 'vin-decode';
     }
@@ -263,7 +265,7 @@ const $vinFour = document.querySelector('.vin-four');
 const $searchFour = document.querySelector('.search-four');
 
 function siDecode(event) { // GSR sample VIN: JH4DC2390XS004187
-  const vinInput = $vinFour.value; // Civic SI VIN sample 1HGEM115XYL119227
+  vinInput = $vinFour.value; // Civic SI VIN sample 1HGEM115XYL119227
   for (var i = 0; i < vinInput.length; i++) {
     if (vinInput.length !== 17) {
       $notSeventeen.classList.remove('hidden');
@@ -305,6 +307,10 @@ var dataViewsExit = () => {
 };
 
 $exitButton.addEventListener('click', event => {
+  $vinOne.value = '';
+  $vinTwo.value = '';
+  $vinThree.value = '';
+  $vinFour.value = '';
   dataViewsExit();
 });
 
@@ -339,6 +345,7 @@ const openEntryForm = () => {
 $stiPlus.addEventListener('click', () => {
   openEntryForm();
   data.view = 'entry-form';
+  data.application = 'sti';
 }
 );
 
@@ -347,6 +354,7 @@ const $gsrPlus = document.querySelector('.gsr-plus');
 $gsrPlus.addEventListener('click', () => {
   openEntryForm();
   data.view = 'entry-form';
+  data.application = 'gsr';
 });
 
 const $ls3Plus = document.querySelector('.ls3-plus');
@@ -354,6 +362,7 @@ const $ls3Plus = document.querySelector('.ls3-plus');
 $ls3Plus.addEventListener('click', () => {
   openEntryForm();
   data.view = 'entry-form';
+  data.application = 'ls3';
 });
 
 const $siPlus = document.querySelector('.si-plus');
@@ -361,6 +370,7 @@ const $siPlus = document.querySelector('.si-plus');
 $siPlus.addEventListener('click', () => {
   openEntryForm();
   data.view = 'entry-form';
+  data.application = 'si';
 });
 
 var $urlInput = document.querySelector('.url-input');
@@ -421,6 +431,7 @@ $entryForm.addEventListener('submit', function (event) {
   onChange();
 
   data.nextEntryId++;
+  data.application = [];
 
   $imagePlaceholder.setAttribute('src', 'images/placeholder-image-square.jpg');
   $entryForm.reset();
@@ -444,6 +455,28 @@ function noRefresh() {
     $siPage.classList.remove('hidden');
   }
 }
+
+var $cancelEntry = document.querySelector('.cancel-entry');
+
+$cancelEntry.addEventListener('click', event => {
+  if (data.application === 'sti') {
+    data.view = 'sti';
+    $entryDiv.classList.add('hidden');
+    $subaruPage.classList.remove('hidden');
+  } else if (data.application === 'gsr') {
+    data.view = 'gsr';
+    $entryDiv.classList.add('hidden');
+    $gsrPage.classList.remove('hidden');
+  } else if (data.application === 'ls3') {
+    data.view = 'ls3';
+    $entryDiv.classList.add('hidden');
+    $ls3Page.classList.remove('hidden');
+  } else if (data.application === 'si') {
+    data.view = 'civic-si';
+    $entryDiv.classList.add('hidden');
+    $siPage.classList.remove('hidden');
+  }
+});
 
 window.addEventListener('beforeunload', function (event) {
   if (data.view === 'vin-decode') {

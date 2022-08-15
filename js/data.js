@@ -4,7 +4,8 @@ var data = {
   entries: [],
   editing: null,
   nextEntryId: 1,
-  decode: []
+  decode: [],
+  application: []
 };
 
 var previousDataJSON = localStorage.getItem('engineData');
