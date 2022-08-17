@@ -105,34 +105,13 @@
             <h2 class="align-end share-sti">Please share your information of WRX STI</h2>
           </div>
           <div class="column-half plus-column">
-            <button class="plus-button">+</button>
+            <button class="plus-button sti-plus">+</button>
           </div>
         </div>
-        <div class="row entry-row ">
-          <div class="column-half align-end left-div mobile-entry">
-            <div>
-              <img src="images/wrx-downpipe.jpg" alt="STI-downpipe" class="engine-image">
-            </div>
-          </div>
-          <div class="column-half">
-            <ul class="right-column">
-              <li>
-                <h3 class="entry-heading">2004 WRX STI Catalytic Converter</h3>
-              </li>
-              <li class="edit-pencil">
-                <i class="fas fa-pencil-alt"></i>
-              </li>
-              <li>
-                <p class="entry-p">
-                  This is an example of stock 2004 - 2007 WRX STI catalytic converters, and an unkown brand of turbo down-pipe that is
-                  commonly installed in the catalytic converters place.
-                </p>
-              </li>
-            </ul>
-          </div>
+        <div class="row entry-row wrx-entry">
         </div>
       </div>
-      <div data-view="integra-gsr" class="engine-pages gsr-page hidden">
+      <div data-view="gsr" class="engine-pages gsr-page hidden">
         <div class="row">
           <div class="column-half left-div align-end">
             <img src="images/b18c1.jfif" alt="Integra-GSR" class="engine-image">
@@ -164,30 +143,10 @@
             <h2 class="align-end share-gsr">Please share your information of the Integra GSR</h2>
           </div>
           <div class="column-half">
-            <button class="plus-button">+</button>
+            <button class="plus-button gsr-plus">+</button>
           </div>
         </div>
-        <div class="row entry-row ">
-          <div class="column-half align-end left-div mobile-entry">
-            <div>
-              <img src="images/b18c1-manifold.jpg" alt="STI-downpipe" class="engine-image">
-            </div>
-          </div>
-          <div class="column-half">
-            <ul class="right-column">
-              <li>
-                <h3 class="entry-heading">GSR Intake Manifold</h3>
-              </li>
-              <li class="edit-pencil">
-                <i class="fas fa-pencil-alt"></i>
-              </li>
-              <li>
-                <p class="entry-p">
-                  This is an example of stock Integera GSR intake manifold.
-                </p>
-              </li>
-            </ul>
-          </div>
+        <div class="row entry-row gsr-entry">
         </div>
       </div>
       <div data-view="ls3" class="engine-pages ls3-page hidden">
@@ -226,33 +185,12 @@
             <h2 class="align-end share-chevy">Please share your information of the Chevrolet LS3</h2>
           </div>
           <div class="column-half">
-            <button class="plus-button">+</button>
+            <button class="plus-button ls3-plus">+</button>
           </div>
         </div>
-        <div class="row entry-row ">
-          <div class="column-half align-end left-div mobile-entry">
-            <div>
-              <img src="images/camaro-twc.jpg" alt="LS3-Catalysts" class="engine-image">
-            </div>
-          </div>
-          <div class="column-half">
-            <ul class="right-column">
-              <li>
-                <h3 class="entry-heading">Camaro LS3 Catalytic Converter</h3>
-              </li>
-              <li class="edit-pencil">
-                <i class="fas fa-pencil-alt"></i>
-              </li>
-              <li>
-                <p class="entry-p">
-                  This is an example of stock Camrao LS3 catalytic converters.
-                </p>
-              </li>
-            </ul>
-          </div>
-        </div>
+        <div class="row entry-row ls3-entry"></div>
       </div>
-      <div data-view="civic-Si" class="engine-pages si-page hidden">
+      <div data-view="civic-si" class="engine-pages si-page hidden">
         <div class="row">
           <div class="column-half align-end left-div">
             <img src="images/b16a2.jpg" alt="Honda B16A2" class="engine-image">
@@ -282,31 +220,10 @@
             <h2 class="align-end share-honda">Please share your information of the Civic Si</h2>
           </div>
           <div class="column-half">
-            <button class="plus-button">+</button>
+            <button class="plus-button si-plus">+</button>
           </div>
         </div>
-        <div class="row entry-row ">
-          <div class="column-half align-end left-div mobile-entry">
-            <div>
-              <img src="images/b16a2-ecu.jpg" alt="STI-downpipe" class="engine-image">
-            </div>
-          </div>
-          <div class="column-half">
-            <ul class="right-column">
-              <li>
-                <h3 class="entry-heading">Civic B16A2 ECU</h3>
-              </li>
-              <li class="edit-pencil">
-                <i class="fas fa-pencil-alt"></i>
-              </li>
-              <li>
-                <p class="entry-p">
-                  This is an example of stock Civic B16A2 ECU.
-                </p>
-              </li>
-            </ul>
-          </div>
-        </div>
+        <div class="row entry-row si-entry"></div>
       </div>
       <div class="not-seventeen row hidden">
         <div class="modal-vin">
@@ -320,7 +237,7 @@
           <button class="close-alphanum">Close</button>
         </div>
       </div>
-      <div class="vin-decode hidden">
+      <div data-view="vin-decode" class="vin-decode hidden">
         <div class="row">
           <h2><span class="decode-heading"></span></h2>
         </div>
@@ -355,6 +272,54 @@
         <div class="row content-end">
           <button class="exit-button">EXIT</button>
         </div>
+      </div>
+      <div data-view="entry-form" class="entry-div hidden">
+        <div class="row column-half">
+          <h2 class="post-header">Post Entry</h2>
+        </div>
+        <form id="entry-form">
+          <div class="row">
+            <div class="column-half placeholder-column">
+              <img src="images/placeholder-image-square.jpg" alt="image-placeholder" class="engine-image image-placeholder">
+            </div>
+            <div class="column-half">
+              <h3 class="title-header mobile-heading">Title</h3>
+              <label for="post-title"></label>
+              <input required name="title" class="post-input" type="text" placeholder="Include vehicle model">
+              <h3 class="url-header mobile-heading">Photo URL</h3>
+              <label for="photo-url"></label>
+              <input required name="url" class="post-input url-input" type="text" placeholder="Enter your photo here">
+            </div>
+          </div>
+          <div class="row comments-post">
+            <div>
+              <h3 class="comments-header mobile-heading">Comments</h3>
+            </div>
+            <div class="row textarea-row">
+              <label for="comments"></label>
+              <textarea name="comments" class="comments-textarea" placeholder="Enter your description" rows="6" required></textarea>
+            </div>
+          </div>
+          <div class="row">
+            <h3 class="application-heading mobile-heading">Engine Application</h3>
+          </div>
+          <div class="row">
+            <label for="engine-selection"></label>
+            <select name="engine-selection" class="engine-selection cursor-pointer" id="engine-selection" required>
+              <option value="">Select an Engine Application </option>
+              <option value="sti">Subaru WRX STI 2.5L</option>
+              <option value="gsr">Acura Integra GSR 1.8L</option>
+              <option value="si">Honda Civic SI 1.6L</option>
+              <option value="ls3">Chevrolet LS3 6.2L</option>
+            </select>
+            <div class="cancel-post">
+              <button type="reset" class="cancel-entry">Cancel</button>
+            </div>
+            <div class="submit-div">
+              <button type="submit" class="submit-button">Submit</button>
+            </div>
+          </div>
+        </form>
       </div>
     </main>
   </div>

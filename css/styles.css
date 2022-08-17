@@ -85,6 +85,7 @@ button {
   padding: 6px 12px;
   border-radius: 4px;
   border: none;
+  font-size: 1rem;
 }
 
 /* VIN Search */
@@ -139,7 +140,7 @@ ul {
 }
 
 li:nth-child(2) {
-  color: #f5f5f5;
+  color: #979797;
 }
 
 .edit-pencil {
@@ -177,146 +178,54 @@ h3 > span {
   margin-right: 1rem;
 }
 
-@media screen and (max-width: 480px) {
-  /* Header */
-  .header-applications {
-    position: relative;
-    right: 0;
-  }
+/* Post Entry Page */
+.engine-selection {
+  padding: 6px 28px 6px 12px;
+  border-radius: 4px;
+  border: 1px solid #ced4da;
+  font-family: roboto, sans-serif;
+}
 
-  .engines-link {
-    position: relative;
-    right: 0.75rem;
-  }
+select {
+  width: 20rem;
+  font-size: 1rem;
+  appearance: none;
+  background: url("data:image/svg+xml,<svg height='13px' width='13px' viewBox='0 0 16 16' fill='%23000000' xmlns='http://www.w3.org/2000/svg'><path d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/></svg>") no-repeat;
+  background-position: calc(100% - 0.75rem) center;
+}
 
-  /* Engine Pages */
+.post-input {
+  padding: 0.5rem 5rem 0.5rem 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+}
 
-  .applications-heading {
-    font-size: 2.35rem;
-    margin: 2rem 0 0;
-  }
+.comments-textarea {
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #ced4da;
+  resize: none;
+  font-size: 1.2rem;
+  font-family: roboto, sans-serif;
+}
 
-  hr {
-    background-color: white;
-  }
+.entry-div {
+  margin: 2rem 0 0;
+}
 
-  .selection-heading {
-    margin-top: 0.5rem;
-    font-size: 1.2rem;
-    font-weight: 700;
-  }
+.cancel-entry {
+  background-color: #c00;
+}
 
-  .left-div,
-  .right-div {
-    margin: 1.5rem 0 0.5rem;
-    padding-bottom: 1rem;
-  }
+/* STI Entries */
+.entry-row {
+  flex-direction: column;
+}
 
-  .engine-image {
-    width: 100%;
-  }
-
-  a > h3 {
-    margin: 0.5rem 0 1.2rem;
-  }
-
-  /* Engine pages */
-  .engine-heading {
-    text-align: left;
-    font-size: 2rem;
-    margin: 0 0 1rem;
-  }
-
-  /* VIN Search */
-  .vin-header > h3 {
-    margin-bottom: 0;
-    text-align: start;
-  }
-
-  .vin-search {
-    margin: 0.5rem 0;
-    padding: 0 0 0.25rem;
-  }
-
-  .search-column {
-    text-align: end;
-  }
-
-  /* VIN input */
-  div > input {
-    width: 100%;
-  }
-
-  /* Add entry */
-
-  .share-sti {
-    text-align: start;
-    margin-bottom: 0;
-  }
-
-  .plus-button {
-    padding: 0.25rem 1.25rem;
-    position: relative;
-    bottom: 1rem;
-    left: 18.25rem;
-  }
-
-  /* mobile entries */
-  .mobile-entry {
-    margin: 0;
-  }
-
-  ul {
-    padding: 0;
-  }
-
-  i {
-    position: relative;
-    left: 19.75rem;
-    bottom: 4.25rem;
-  }
-
-  .entry-heading {
-    font-size: 2rem;
-    text-align: left;
-    margin: 0;
-  }
-
-  .entry-p {
-    margin-top: 0;
-  }
-
-  /* GSR Page */
-  .share-gsr {
-    text-align: start;
-    margin-bottom: 0;
-  }
-
-  /* LS3 Page */
-  .ls3-vin > h3 {
-    margin-bottom: 0;
-    text-align: start;
-  }
-
-  .share-chevy {
-    text-align: start;
-    margin-bottom: 0;
-  }
-
-  .share-honda {
-    text-align: start;
-    margin-bottom: 0;
-  }
-
-  /* mobile VIN decode page */
-  .vin-decode {
-    margin: 0;
-    padding: 0;
-  }
-
-  .decoded > h3 {
-    text-align: start;
-  }
+/* All Entries */
+.posted-row {
+  margin: 0 0 3rem;
 }
 
 @media screen and (min-width: 992px) {
@@ -464,13 +373,57 @@ h3 > span {
     position: relative;
     bottom: 4rem;
   }
+
+  .post-header {
+    font-size: 2.5rem;
+    position: relative;
+    left: 4.5rem;
+  }
+
+  .placeholder-column {
+    text-align: end;
+    margin: 0 3rem 0 0;
+  }
+
+  .title-header {
+    text-align: start;
+    margin: 0 0 0.25rem;
+  }
+
+  .url-header {
+    margin: 2rem 0 0.25rem;
+    text-align: start;
+  }
+
+  .comments-header {
+    position: relative;
+    right: 22rem;
+    margin: 1.6rem 0 0.4rem;
+  }
+
+  .application-heading {
+    position: relative;
+    right: 20rem;
+    margin: 1.6rem 0 0.5rem;
+  }
+
+  .engine-selection {
+    position: relative;
+    right: 10rem;
+    margin: 0 0 3rem;
+  }
+
+  .submit-button {
+    position: relative;
+    left: 4.5rem;
+  }
 }
 
-@media screen and (min-width: 1600px) {
+@media screen and (min-width: 1539px) {
   /* Header */
   .header-applications {
     position: relative;
-    right: 16rem;
+    right: 15.75rem;
   }
 
   .engines-link {
@@ -520,5 +473,194 @@ h3 > span {
   /* entries */
   li:nth-child(2) {
     bottom: 1.75rem;
+  }
+
+  /* Post entry page */
+  .comments-header {
+    right: 27.75rem;
+  }
+
+  textarea {
+    right: 5.5rem;
+    width: 50rem;
+  }
+
+  .application-heading {
+    right: 25.75rem;
+  }
+
+  .engine-selection {
+    right: 16rem;
+  }
+
+  .submit-button {
+    left: 5rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  /* Header */
+  .header-applications {
+    position: relative;
+    right: 0;
+  }
+
+  .engines-link {
+    position: relative;
+    right: 0.75rem;
+  }
+
+  /* Engine Pages */
+
+  .applications-heading {
+    font-size: 2.35rem;
+    margin: 2rem 0 0;
+  }
+
+  hr {
+    background-color: white;
+  }
+
+  .selection-heading {
+    margin-top: 0.5rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+
+  .left-div,
+  .right-div {
+    margin: 1.5rem 0 0.5rem;
+    padding-bottom: 1rem;
+  }
+
+  .engine-image {
+    width: 100%;
+  }
+
+  a > h3 {
+    margin: 0.5rem 0 1.2rem;
+  }
+
+  /* Engine pages */
+  .engine-heading {
+    text-align: left;
+    font-size: 2rem;
+    margin: 0 0 1rem;
+  }
+
+  /* VIN Search */
+  .vin-header > h3 {
+    margin-bottom: 0;
+    text-align: start;
+  }
+
+  .vin-search {
+    margin: 0.5rem 0;
+    padding: 0 0 0.25rem;
+  }
+
+  .search-column {
+    text-align: end;
+  }
+
+  /* VIN input */
+  div > input {
+    width: 100%;
+  }
+
+  /* Add entry */
+
+  .share-sti {
+    text-align: start;
+    margin-bottom: 0;
+  }
+
+  .plus-button {
+    padding: 0.25rem 1.25rem;
+    position: relative;
+    bottom: 1rem;
+    left: 18.25rem;
+  }
+
+  /* mobile entries */
+  .mobile-entry {
+    margin: 0;
+  }
+
+  ul {
+    padding: 0;
+  }
+
+  i {
+    position: relative;
+    left: 19.75rem;
+    bottom: 4.25rem;
+  }
+
+  .entry-heading {
+    font-size: 2rem;
+    text-align: left;
+    margin: 0;
+  }
+
+  .entry-p {
+    margin-top: 0;
+  }
+
+  /* GSR Page */
+  .share-gsr {
+    text-align: start;
+    margin-bottom: 0;
+  }
+
+  /* LS3 Page */
+  .ls3-vin > h3 {
+    margin-bottom: 0;
+    text-align: start;
+  }
+
+  .share-chevy {
+    text-align: start;
+    margin-bottom: 0;
+  }
+
+  .share-honda {
+    text-align: start;
+    margin-bottom: 0;
+  }
+
+  /* mobile VIN decode page */
+  .vin-decode {
+    margin: 0;
+    padding: 0;
+  }
+
+  .decoded > h3 {
+    text-align: start;
+  }
+
+  /* Mobile Post */
+  .mobile-heading {
+    text-align: left;
+    margin-bottom: 0.6rem;
+  }
+
+  .textarea-row {
+    margin: 0;
+  }
+
+  .engine-selection {
+    margin: 0 0 1rem;
+    width: 100%;
+  }
+
+  .submit-div {
+    text-align: end;
+    position: relative;
+    bottom: 1.85rem;
+  }
+
+  .submit-button {
+    margin: 0 0 1rem;
   }
 }
