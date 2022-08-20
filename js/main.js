@@ -402,8 +402,6 @@ $entryForm.addEventListener('submit', function (event) {
     application: value
   };
 
-  entries.entryId = data.nextEntryId;
-
   function onChange() {
     if (value === 'sti') {
       $wrxEntry.prepend(renderPost(entries));
@@ -429,28 +427,42 @@ $entryForm.addEventListener('submit', function (event) {
   }
 
   if (data.editing !== null) {
+    $entryDiv.classList.add('hidden');
     for (var i = 0; i < data.entries.length; i++) {
       if (data.entries[i].entryId === data.editing.entryId) {
+        entries.entryId = data.editing.entryId;
         if (data.editing.application === 'sti' && value === 'sti') {
-          data.entries.splice(i, 1);
-          data.entries.unshift(entries);
+          data.entries.splice(i, 1, entries);
+          // data.entries.unshift(entries);
           $wrxEntry.replaceWith(renderPost(entries));
-          $entryDiv.classList.add('hidden');
           $subaruPage.classList.remove('hidden');
           data.view = 'sti';
         } else if (data.editing.application === 'gsr' && value === 'gsr') {
-          data.entries.splice(i, 1, entries);
-          $gsrEntry.prepend(renderPost(entries));
-          $entryDiv.classList.add('hidden');
+          data.entries.splice(i, 1);
+          data.entries.unshift(entries);
+          $gsrEntry.replaceWith(renderPost(entries));
           $gsrPage.classList.remove('hidden');
           data.view = 'gsr';
+        } else if (data.editing.application === 'si' && value === 'si') {
+          data.entries.splice(i, 1);
+          data.entries.unshift(entries);
+          $siEntry.replaceWith(renderPost(entries));
+          $siPage.classList.remove('hidden');
+          data.view = 'civic-si';
+        } else if (data.editing.application === 'ls3' && value === 'ls3') {
+          data.entries.splice(i, 1);
+          data.entries.unshift(entries);
+          $ls3Entry.replaceWith(renderPost(entries));
+          $ls3Page.classList.remove('hidden');
+          data.view = 'ls3';
         }
       }
     }
   } else {
     data.entries.unshift(entries);
-    data.nextEntryId++;
     onChange();
+    entries.entryId = data.nextEntryId;
+    data.nextEntryId++;
   }
 
   data.application = [];
@@ -516,6 +528,8 @@ window.addEventListener('beforeunload', function (event) {
 });
 
 document.addEventListener('DOMContentLoaded', function (event) {
+  event.preventDefault();
+
   for (var i = 0; i < data.entries.length; i++) {
     if (data.view === 'sti' && data.entries[i].application === 'sti') {
       $wrxEntry.appendChild(renderPost(data.entries[i]));
@@ -553,10 +567,13 @@ document.addEventListener('DOMContentLoaded', function (event) {
             $subaruPage.classList.add('hidden');
           } else if (data.editing.application === 'gsr') {
             $engineSelection.value = 'gsr';
+            $gsrPage.classList.add('hidden');
           } else if (data.editing.application === 'si') {
             $engineSelection.value = 'si';
+            $siPage.classList.add('hidden');
           } else if (data.editing.application === 'ls3') {
             $engineSelection.value = 'ls3';
+            $ls3Page.classList.add('hidden');
           }
         }
       }
