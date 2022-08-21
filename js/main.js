@@ -385,7 +385,8 @@ const $gsrEntry = document.querySelector('.gsr-entry');
 const $ls3Entry = document.querySelector('.ls3-entry');
 const $siEntry = document.querySelector('.si-entry');
 var $engineSelection = document.getElementById('engine-selection');
-// var $incorrectApplication = document.querySelector('.incorrect-application');
+var $incorrectApplication = document.querySelector('.incorrect-application');
+var $incorectClose = document.querySelector('.incorrect-close');
 
 $entryForm.addEventListener('submit', function (event) {
   event.preventDefault();
@@ -433,7 +434,6 @@ $entryForm.addEventListener('submit', function (event) {
         entries.entryId = data.editing.entryId;
         if (data.editing.application === 'sti' && value === 'sti') {
           data.entries.splice(i, 1, entries);
-          // data.entries.unshift(entries);
           $wrxEntry.replaceWith(renderPost(entries));
           $subaruPage.classList.remove('hidden');
           data.view = 'sti';
@@ -458,6 +458,8 @@ $entryForm.addEventListener('submit', function (event) {
         }
       }
     }
+  } else if (data.application !== value) {
+    $incorrectApplication.classList.remove('hidden');
   } else {
     data.entries.unshift(entries);
     onChange();
@@ -470,6 +472,10 @@ $entryForm.addEventListener('submit', function (event) {
 
   $imagePlaceholder.setAttribute('src', 'images/placeholder-image-square.jpg');
   $entryForm.reset();
+});
+
+$incorectClose.addEventListener('click', function (event) {
+  $incorrectApplication.classList.add('hidden');
 });
 
 function noRefresh() {

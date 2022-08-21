@@ -663,4 +663,14 @@ select {
   .submit-button {
     margin: 0 0 1rem;
   }
+
+  .incorrect-application {
+    margin-right: 0;
+  }
+
+  .modal-vin {
+    width: 75%;
+    position: relative;
+    top: 20rem;
+  }
 }
