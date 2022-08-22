@@ -593,8 +593,8 @@ select {
 
   i {
     position: relative;
-    left: 19.75rem;
-    bottom: 4.25rem;
+    left: 20.5rem;
+    bottom: 2rem;
   }
 
   .entry-heading {
@@ -662,5 +662,15 @@ select {
 
   .submit-button {
     margin: 0 0 1rem;
+  }
+
+  .incorrect-application {
+    margin-right: 0;
+  }
+
+  .modal-vin {
+    width: 75%;
+    position: relative;
+    top: 20rem;
   }
 }

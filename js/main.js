@@ -385,6 +385,8 @@ const $gsrEntry = document.querySelector('.gsr-entry');
 const $ls3Entry = document.querySelector('.ls3-entry');
 const $siEntry = document.querySelector('.si-entry');
 var $engineSelection = document.getElementById('engine-selection');
+var $incorrectApplication = document.querySelector('.incorrect-application');
+var $incorectClose = document.querySelector('.incorrect-close');
 
 $entryForm.addEventListener('submit', function (event) {
   event.preventDefault();
@@ -401,10 +403,7 @@ $entryForm.addEventListener('submit', function (event) {
     application: value
   };
 
-  entries.entryId = data.nextEntryId;
-
   function onChange() {
-    data.entries.unshift(entries);
     if (value === 'sti') {
       $wrxEntry.prepend(renderPost(entries));
       $entryDiv.classList.add('hidden');
@@ -428,13 +427,56 @@ $entryForm.addEventListener('submit', function (event) {
     }
   }
 
-  onChange();
+  if (data.editing !== null) {
+    $entryDiv.classList.add('hidden');
+    for (var i = 0; i < data.entries.length; i++) {
+      if (data.entries[i].entryId === data.editing.entryId) {
+        entries.entryId = data.editing.entryId;
+        if (data.editing.application === 'sti' && value === 'sti') {
+          data.entries.splice(i, 1);
+          data.entries.unshift(entries);
+          data.view = 'sti';
+          window.location.reload();
+          $wrxEntry.prepend(renderPost(entries));
+        } else if (data.editing.application === 'gsr' && value === 'gsr') {
+          data.entries.splice(i, 1);
+          data.entries.unshift(entries);
+          data.view = 'gsr';
+          window.location.reload();
+          $gsrEntry.prepend(renderPost(entries));
+        } else if (data.editing.application === 'si' && value === 'si') {
+          data.entries.splice(i, 1);
+          data.entries.unshift(entries);
+          data.view = 'civic-si';
+          window.location.reload();
+          $siEntry.prepend(renderPost(entries));
+        } else if (data.editing.application === 'ls3' && value === 'ls3') {
+          data.entries.splice(i, 1);
+          data.entries.unshift(entries);
+          data.view = 'ls3';
+          window.location.reload();
+          $ls3Entry.prepend(renderPost(entries));
+        }
+      }
+    }
+  } else if (data.application !== value) {
+    $incorrectApplication.classList.remove('hidden');
+  } else {
+    data.entries.unshift(entries);
+    onChange();
+    entries.entryId = data.nextEntryId;
+    data.nextEntryId++;
+  }
 
-  data.nextEntryId++;
   data.application = [];
+  data.editing = null;
 
   $imagePlaceholder.setAttribute('src', 'images/placeholder-image-square.jpg');
   $entryForm.reset();
+});
+
+$incorectClose.addEventListener('click', function (event) {
+  $incorrectApplication.classList.add('hidden');
 });
 
 function noRefresh() {
@@ -457,8 +499,10 @@ function noRefresh() {
 }
 
 var $cancelEntry = document.querySelector('.cancel-entry');
+var $postHeader = document.querySelector('.post-header');
 
 $cancelEntry.addEventListener('click', event => {
+  $postHeader.textContent = 'Post Entry';
   if (data.application === 'sti') {
     data.view = 'sti';
     $entryDiv.classList.add('hidden');
@@ -476,22 +520,17 @@ $cancelEntry.addEventListener('click', event => {
     $entryDiv.classList.add('hidden');
     $siPage.classList.remove('hidden');
   }
-});
 
-window.addEventListener('beforeunload', function (event) {
-  if (data.view === 'vin-decode') {
-    event.preventDefault();
-    event.returnValue = '';
-  } else if (data.view === 'entry-form') {
-    event.preventDefault();
-    event.returnValue = '';
-  }
+  data.editing = null;
 });
 
 document.addEventListener('DOMContentLoaded', function (event) {
+  event.preventDefault();
+
   for (var i = 0; i < data.entries.length; i++) {
     if (data.view === 'sti' && data.entries[i].application === 'sti') {
-      $wrxEntry.appendChild(renderPost(data.entries[i]));
+      var stiEntries = renderPost(data.entries[i]);
+      $wrxEntry.appendChild(stiEntries);
     } else if (data.view === 'gsr' && data.entries[i].application === 'gsr') {
       $gsrEntry.appendChild(renderPost(data.entries[i]));
     } else if (data.view === 'ls3' && data.entries[i].application === 'ls3') {
@@ -502,6 +541,42 @@ document.addEventListener('DOMContentLoaded', function (event) {
   }
 
   noRefresh();
+
+  var $editPencil = document.querySelectorAll('.edit-pencil');
+
+  for (var h = 0; h < $editPencil.length; h++) {
+    $editPencil[h].addEventListener('click', function (event) {
+      var dataEntryIdValue = event.target.getAttribute('data-entry-id');
+      var parsedDataEntryIdValue = parseInt(dataEntryIdValue);
+
+      $entryDiv.classList.remove('hidden');
+      data.view = 'entry-form';
+      $postHeader.textContent = 'Edit Post';
+
+      for (var j = 0; j < data.entries.length; j++) {
+        if (parsedDataEntryIdValue === data.entries[j].entryId) {
+          data.editing = data.entries[j];
+          $entryForm.elements.title.value = data.entries[j].title;
+          $entryForm.elements.url.value = data.entries[j].url;
+          $imagePlaceholder.setAttribute('src', data.entries[j].url);
+          $entryForm.elements.comments.value = data.entries[j].comments;
+          if (data.editing.application === 'sti') {
+            $engineSelection.value = 'sti';
+            $subaruPage.classList.add('hidden');
+          } else if (data.editing.application === 'gsr') {
+            $engineSelection.value = 'gsr';
+            $gsrPage.classList.add('hidden');
+          } else if (data.editing.application === 'si') {
+            $engineSelection.value = 'si';
+            $siPage.classList.add('hidden');
+          } else if (data.editing.application === 'ls3') {
+            $engineSelection.value = 'ls3';
+            $ls3Page.classList.add('hidden');
+          }
+        }
+      }
+    });
+  }
 });
 
 function renderPost(entries) {
@@ -537,6 +612,7 @@ function renderPost(entries) {
 
   var listTwo = document.createElement('li');
   var editPencil = document.createElement('i');
+  editPencil.setAttribute('data-entry-id', entries.entryId);
   listTwo.setAttribute('class', 'edit-pencil');
   editPencil.setAttribute('class', 'fas fa-pencil-alt');
   listTwo.appendChild(editPencil);
