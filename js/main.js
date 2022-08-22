@@ -524,16 +524,6 @@ $cancelEntry.addEventListener('click', event => {
   data.editing = null;
 });
 
-// window.addEventListener('beforeunload', function (event) {
-//   if (data.view === 'vin-decode') {
-//     event.preventDefault();
-//     event.returnValue = '';
-//   } else if (data.view === 'entry-form') {
-//     event.preventDefault();
-//     event.returnValue = '';
-//   }
-// });
-
 document.addEventListener('DOMContentLoaded', function (event) {
   event.preventDefault();
 
